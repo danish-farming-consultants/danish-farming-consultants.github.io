@@ -79,7 +79,7 @@ aside {
 }
 
 .navbar-default .navbar-header .navbar-brand img {
-  height: 2.5em;
+  height: 1.3em;
 }
 
 .navbar-default .nav > li > a,
@@ -107,6 +107,10 @@ aside {
 }
 
 @media (min-width: 768px) {
+  .navbar-default .navbar-header .navbar-brand img {
+    height: 2.5em;
+  }
+
   .navbar {
     padding-bottom: 20px;
     padding-top: 20px;
