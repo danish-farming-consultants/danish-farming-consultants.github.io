@@ -109,16 +109,36 @@ aside {
 @media (min-width: 768px) {
   .navbar-default .navbar-header .navbar-brand img {
     height: 2.5em;
-  }
-
-  .navbar {
-    padding-bottom: 20px;
-    padding-top: 20px;
+    padding-left: 50px;
   }
 
   .navbar-default {
     border-color: rgba(255, 255, 255, .3);
     background-color: #fff;
+    padding-top: 22px;
+    min-height: 100px;
+  }
+
+  .navbar-default.affix {
+    padding-top: 9px;
+    min-height: 70px;
+  }
+
+  .navbar-right-info {
+    padding-top: 0px;
+    height: 0px;
+  }
+
+  .navbar-nav>li>a.navbar-right-info-link {
+    padding-top: 0px;
+  }
+
+  .navbar-right-info img {
+    height: 4.7em;
+  }
+
+  .affix .navbar-nav>li>a.navbar-right-info-link {
+    font-size: 0.8em;
   }
 
   .navbar-default .navbar-header .navbar-brand {
