@@ -135,6 +135,7 @@ aside {
 
   .navbar-right-info img {
     height: 4.7em;
+    padding-right: 20px;
   }
 
   .affix .navbar-nav>li>a.navbar-right-info-link {
@@ -227,7 +228,7 @@ header .header-content .header-content-inner p {
 
 @media (min-width: 768px) {
   header {
-    min-height: 100%;
+    min-height: 80%;
   }
 
   header .header-content {
