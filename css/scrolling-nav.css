@@ -47,36 +47,57 @@ of those sections to manage the look and feel of the site. */
 }
 
 .stock-section {
-  height: 40%;
-  padding-top: 150px;
   text-align: center;
   background: #eee;
-  background: url(../img/oferta.jpg) no-repeat center center scroll;
+  /*background: url(../img/oferta.jpg) no-repeat center center scroll;*/
 }
 
 .contact-section {
-  height: 80%;
   padding-top: 150px;
   text-align: center;
   background: #eee;
-  background: url(../img/kontakt.jpg) no-repeat center center scroll;
+  /*background: url(../img/kontakt.jpg) no-repeat center center scroll;*/
 }
 
 .news-section {
-  height: 80%;
   padding-top: 150px;
   text-align: center;
   background: #fff;
-  background: url(../img/aktualnosci.jpg) no-repeat center center scroll;
+  /*background: url(../img/aktualnosci.jpg) no-repeat center center scroll;*/
 }
 
 .default-padding {
   padding: 15px;
 }
 
-.col-eq-height.row:before,
-.col-eq-height.row:after {
-  display: none;
+.btn {
+  border: 0;
+  border-radius: 3px;
+  font-weight: 700;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #00855a;
+  word-wrap: break-word;
+  white-space: normal;
+  max-width: 80%;
+  -webkit-transition: all .35s;
+  -moz-transition: all .35s;
+  transition: all .35s;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  background-color: #004a30;
+}
+
+.btn-xl {
+  padding: 15px 30px;
 }
 
 @media (min-width: 767px) {
