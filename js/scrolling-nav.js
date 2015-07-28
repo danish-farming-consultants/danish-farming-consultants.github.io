@@ -23,3 +23,5 @@ $('.navbar-collapse ul li a').click(function() {
 $('body').scrollspy({
   offset: 133
 });
+
+new WOW().init();
