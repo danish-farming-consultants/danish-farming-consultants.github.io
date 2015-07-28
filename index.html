@@ -27,7 +27,7 @@
 
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
+  <div class="container-fluid">
     <div class="navbar-header page-scroll">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
         <span class="sr-only">Toggle navigation</span>
@@ -35,7 +35,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
+      <a class="navbar-brand page-scroll" href="#page-top"><img src="img/dfc-logo.jpg" alt="dfc"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -46,16 +46,21 @@
           <a class="page-scroll" href="#page-top"></a>
         </li>
         <li>
-          <a class="page-scroll" href="#about">firma</a>
+          <a class="page-scroll" href="#intro">firma</a>
         </li>
         <li>
-          <a class="page-scroll" href="#services">oferta</a>
+          <a class="page-scroll" href="#stock">oferta</a>
         </li>
         <li>
-          <a class="page-scroll" href="#contact">kontakt</a>
+          <a class="page-scroll" href="#news">kontakt</a>
         </li>
         <li>
           <a class="page-scroll" href="#contact">aktualności</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-right navbar-right-info hidden-xs hidden-sm">
+        <li>
+          <a class="navbar-right-info-link"><img src="img/rf.jpg" alt="Rzetelna Firma"></a>
         </li>
       </ul>
     </div>
@@ -64,24 +69,27 @@
   <!-- /.container -->
 </nav>
 
-<!-- Intro Section -->
 <section id="intro" class="intro-section">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-12">
-        <h1>Scrolling Nav</h1>
-
-        <p><strong>Usage Instructions:</strong> Make sure to include the <code>scrolling-nav.js</code>, <code>jquery.easing.min.js</code>, and <code>scrolling-nav.css</code>
-          files. To make a link smooth scroll to another section on the page, give the link the <code>.page-scroll</code> class and set the link target to a
-          corresponding ID on the page.</p>
-        <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>
+      <div class="col-lg-12" style="min-height: 400px; background: url(../img/firma.jpg) no-repeat center center scroll">
+      </div>
+    </div>
+    <div class="col-eq-height row">
+      <div class="col-md-4 with-border default-padding">
+          Danish Farming Consultants Sp z o.o. w Rzeczycach istnieje od 1 lipca 1995 roku i powstała na bazie części dawnego kombinatu PGR Gliwice. Jest to firma ze stuprocentowym duńskim kapitałem z nieruchomościami dzierżawionymi od Agencji Nieruchomości Rolnych.
+      </div>
+      <div class="col-md-4 with-border default-padding">
+          Jesteśmy jednym z największych  hodowców trzody chlewnej w Polsce. Rocznie w cyklu zamkniętym produkujemy do 60 000 stukilogramowych tuczników. Charakteryzują się one dużą zawartością mięsa w tuszy, dlatego też cieszą się uznaniem wśród renomowanych firm przetwórstwa mięsnego z regionu i nie tylko.
+      </div>
+      <div class="col-md-4 with-border default-padding">
+          Oprócz produkcji zwierzęcej zajmujemy się produkcją rolną. Na 1250 ha uprawiamy jęczmień, pszenicę, kukurydzę, rzepak oraz żyto. Większa część produkcji roślinnej wykorzystywana jest do produkcji pasz dla naszej trzody chlewnej. Corocznie sprzedajemy rzepak oraz żyto. Na chwilę obecną DFC zatrudnia 60 pracowników.
       </div>
     </div>
   </div>
 </section>
 
-<!-- About Section -->
-<section id="about" class="about-section">
+<section id="stock" class="stock-section">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -91,23 +99,26 @@
   </div>
 </section>
 
-<!-- Services Section -->
-<section id="services" class="services-section">
+<section id="contact" class="contact-section">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h1>Services Section</h1>
+        <h1>Scrolling Nav</h1>
+
+        <p><strong>Usage Instructions:</strong> Make sure to include the <code>scrolling-nav.js</code>, <code>jquery.easing.min.js</code>, and <code>scrolling-nav.css</code>
+          files. To make a link smooth scroll to another section on the page, give the link the <code>.page-scroll</code> class and set the link target to a
+          corresponding ID on the page.</p>
+        <a class="btn btn-default page-scroll" href="#stock">Click Me to Scroll Down!</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Contact Section -->
-<section id="contact" class="contact-section">
+<section id="news" class="news-section">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h1>Contact Section</h1>
+        <h1>Services Section</h1>
       </div>
     </div>
   </div>
