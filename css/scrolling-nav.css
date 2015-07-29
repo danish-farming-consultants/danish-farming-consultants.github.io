@@ -2,6 +2,7 @@ body,
 html {
   width: 100%;
   height: 100%;
+  text-align: center;
 }
 
 .navbar-brand img {
@@ -33,7 +34,7 @@ of those sections to manage the look and feel of the site. */
 }
 
 .intro-section {
-  padding-top: 133px;
+  padding-top: 50px;
 }
 
 .intro-section .img-row {
@@ -58,8 +59,11 @@ of those sections to manage the look and feel of the site. */
   font-size: 1.5em;
 }
 
-.btn-primary {
-  color: #fff;
+.btn-xl {
+  padding: 15px 30px;
+}
+
+.btn-green {
   background-color: #00855a;
   word-wrap: break-word;
   white-space: normal;
@@ -69,17 +73,13 @@ of those sections to manage the look and feel of the site. */
   transition: all .35s;
 }
 
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary.focus,
-.btn-primary:active,
-.btn-primary.active,
-.open > .dropdown-toggle.btn-primary {
+.btn-green:hover,
+.btn-green:focus,
+.btn-green.focus,
+.btn-green:active,
+.btn-green.active,
+.open > .dropdown-toggle.btn-green {
   background-color: #004a30;
-}
-
-.btn-xl {
-  padding: 15px 30px;
 }
 
 @media (min-width: 767px) {
@@ -122,15 +122,27 @@ of those sections to manage the look and feel of the site. */
     background-color: #fff;
   }
 
+  .nav>li>a,
+  .nav>li>a:focus,
+  .nav>li>a:hover,
+  .nav>li>a:active,
+  .nav>li>a:link {
+    background-color: #fff
+  }
+
+  .intro-section {
+    padding-top: 133px;
+  }
+
   .col-eq-height.row {
     display: table;
-    border-spacing: 50px
+    padding: 30px;
+    border-spacing: 30px 0;
   }
 
   .col-eq-height [class*="col-"] {
     float: none;
     display: table-cell;
-    /*vertical-align: top;*/
     vertical-align: middle;
   }
 }
