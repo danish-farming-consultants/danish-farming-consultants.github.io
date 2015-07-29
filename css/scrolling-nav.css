@@ -137,7 +137,6 @@ of those sections to manage the look and feel of the site. */
   .col-eq-height.row {
     display: table;
     padding: 30px;
-    border-spacing: 30px 0;
   }
 
   .col-eq-height [class*="col-"] {
