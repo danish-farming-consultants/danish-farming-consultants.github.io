@@ -82,6 +82,19 @@ of those sections to manage the look and feel of the site. */
   background-color: #004a30;
 }
 
+.col-eq-height.row {
+  padding: 30px;
+}
+
+.column-margin {
+  height: 30px;
+  width: 30px;
+}
+
+.col-eq-height [class*="col-"] {
+  padding: 10px;
+}
+
 @media (min-width: 767px) {
   .navbar {
     padding: 40px 0;
@@ -136,7 +149,6 @@ of those sections to manage the look and feel of the site. */
 
   .col-eq-height.row {
     display: table;
-    padding: 30px;
   }
 
   .col-eq-height [class*="col-"] {
