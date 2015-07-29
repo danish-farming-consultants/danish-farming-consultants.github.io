@@ -5,6 +5,20 @@ html {
   text-align: center;
 }
 
+/*a,*/
+/*a:visited {*/
+  /*color: #00855a;*/
+  /*-webkit-transition: all .35s;*/
+  /*-moz-transition: all .35s;*/
+  /*transition: all .35s;*/
+/*}*/
+
+/*a:hover,*/
+/*a:active,*/
+/*a:visited {*/
+  /*color: #004a30;*/
+/*}*/
+
 .navbar-brand img {
   height: 1.5em;
 }
@@ -63,7 +77,16 @@ of those sections to manage the look and feel of the site. */
   padding: 15px 30px;
 }
 
+.btn-margin-top {
+  margin-top: 30px;
+}
+
+.btn-margin-bottom {
+  margin-bottom: 30px;
+}
+
 .btn-green {
+  color: #fff;
   background-color: #00855a;
   word-wrap: break-word;
   white-space: normal;
@@ -87,8 +110,8 @@ of those sections to manage the look and feel of the site. */
 }
 
 .column-margin {
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
 }
 
 .col-eq-height [class*="col-"] {
