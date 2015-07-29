@@ -43,27 +43,18 @@ of those sections to manage the look and feel of the site. */
 .intro-section {
   padding-top: 133px;
   text-align: center;
-  background: #fff;
 }
 
 .stock-section {
   text-align: center;
-  background: #eee;
-  /*background: url(../img/oferta.jpg) no-repeat center center scroll;*/
 }
 
 .contact-section {
-  padding-top: 150px;
   text-align: center;
-  background: #eee;
-  /*background: url(../img/kontakt.jpg) no-repeat center center scroll;*/
 }
 
 .news-section {
-  padding-top: 150px;
   text-align: center;
-  background: #fff;
-  /*background: url(../img/aktualnosci.jpg) no-repeat center center scroll;*/
 }
 
 .default-padding {
@@ -81,7 +72,7 @@ of those sections to manage the look and feel of the site. */
   background-color: #00855a;
   word-wrap: break-word;
   white-space: normal;
-  max-width: 80%;
+  width: 80%;
   -webkit-transition: all .35s;
   -moz-transition: all .35s;
   transition: all .35s;
@@ -148,6 +139,7 @@ of those sections to manage the look and feel of the site. */
   .col-eq-height [class*="col-"] {
     float: none;
     display: table-cell;
-    vertical-align: top;
+    /*vertical-align: top;*/
+    vertical-align: middle;
   }
 }
