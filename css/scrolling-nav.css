@@ -3,6 +3,7 @@ html {
   width: 100%;
   height: 100%;
   text-align: center;
+  -webkit-font-smoothing: antialiased;
 }
 
 /*a,*/
@@ -18,6 +19,10 @@ html {
 /*a:visited {*/
   /*color: #004a30;*/
 /*}*/
+
+.navbar-default {
+ background-color: #fff;
+}
 
 .navbar-brand img {
   height: 1.5em;
@@ -172,6 +177,7 @@ of those sections to manage the look and feel of the site. */
 
   .col-eq-height.row {
     display: table;
+    padding: 30px 200px;
   }
 
   .col-eq-height [class*="col-"] {
