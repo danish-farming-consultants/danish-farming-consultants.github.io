@@ -6,19 +6,18 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
-/*a,*/
-/*a:visited {*/
-  /*color: #00855a;*/
-  /*-webkit-transition: all .35s;*/
-  /*-moz-transition: all .35s;*/
-  /*transition: all .35s;*/
-/*}*/
+a,
+a:visited {
+  color: #00855a;
+  -webkit-transition: all .35s;
+  -moz-transition: all .35s;
+  transition: all .35s;
+}
 
-/*a:hover,*/
-/*a:active,*/
-/*a:visited {*/
-  /*color: #004a30;*/
-/*}*/
+a:hover,
+a:active {
+  color: #037550;
+}
 
 .navbar-default {
  background-color: #fff;
@@ -70,8 +69,12 @@ html {
 
 .btn {
   border: 0;
-  border-radius: 0px;
+  border-radius: 0;
   font-size: 1.5em;
+}
+
+.btn.btn-label {
+  cursor: default;
 }
 
 .btn-xl {
@@ -97,13 +100,20 @@ html {
   transition: all .35s;
 }
 
+a.btn-green {
+  color: #fff;
+}
+
 .btn-green:hover,
 .btn-green:focus,
-.btn-green.focus,
-.btn-green:active,
-.btn-green.active,
-.open > .dropdown-toggle.btn-green {
-  background-color: #004a30;
+.btn-green.active {
+  background-color: #037550;
+}
+
+.btn-green.btn-label:hover,
+.btn-green.btn-label:focus,
+.btn-green.btn-label.active {
+  background-color: #00855a;
 }
 
 .col-eq-height.row {
