@@ -21,7 +21,7 @@ $('.navbar-collapse ul li a').click(function() {
 });
 
 $('body').scrollspy({
-  offset: 133
+  offset: 130
 });
 
 new WOW().init();

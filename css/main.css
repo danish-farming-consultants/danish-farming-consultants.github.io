@@ -40,12 +40,8 @@ html {
   height: 6em;
 }
 
-/* Demo Sections - You can use these as guides or delete them - the scroller will work with any sort of height, fixed, undefined, or percentage based.
-The padding is very important to make sure the scrollspy picks up the right area when scrolled to. Adjust the margin and padding of sections and children
-of those sections to manage the look and feel of the site. */
-
 .with-border {
-  border: solid;
+  border: solid thin;
 }
 
 .img-row {
@@ -74,7 +70,7 @@ of those sections to manage the look and feel of the site. */
 
 .btn {
   border: 0;
-  border-radius: 3px;
+  border-radius: 0px;
   font-size: 1.5em;
 }
 
@@ -83,11 +79,11 @@ of those sections to manage the look and feel of the site. */
 }
 
 .btn-margin-top {
-  margin-top: 30px;
+  margin-top: 80px;
 }
 
 .btn-margin-bottom {
-  margin-bottom: 30px;
+  margin-bottom: 80px;
 }
 
 .btn-green {
@@ -95,7 +91,7 @@ of those sections to manage the look and feel of the site. */
   background-color: #00855a;
   word-wrap: break-word;
   white-space: normal;
-  width: 80%;
+  width: 78%;
   -webkit-transition: all .35s;
   -moz-transition: all .35s;
   transition: all .35s;
@@ -123,10 +119,15 @@ of those sections to manage the look and feel of the site. */
   padding: 10px;
 }
 
+.footer {
+  padding: 10px;
+  border-top: solid thin;
+}
+
 @media (min-width: 767px) {
   .navbar {
     padding: 40px 0;
-    border-bottom: solid;
+    border-bottom: solid thin;
   }
 
   .navbar-brand {
@@ -172,17 +173,24 @@ of those sections to manage the look and feel of the site. */
   }
 
   .intro-section {
-    padding-top: 133px;
+    padding-top: 130px;
   }
 
   .col-eq-height.row {
     display: table;
-    padding: 30px 200px;
+    padding: 80px;
   }
 
   .col-eq-height [class*="col-"] {
     float: none;
     display: table-cell;
     vertical-align: middle;
+  }
+}
+
+@media (min-width: 1200px) {
+  .col-eq-height.row {
+    padding-left: 200px;
+    padding-right: 200px;
   }
 }
