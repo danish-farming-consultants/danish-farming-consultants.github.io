@@ -16,7 +16,7 @@ $(function () {
   });
 });
 
-$('.navbar-collapse ul li a').click(function() {
+$('.navbar-collapse ul li a').click(function () {
   $('.navbar-toggle:visible').click();
 });
 
@@ -26,6 +26,13 @@ $('body').scrollspy({
 
 $('#see-more').click(function () {
   $('#more-news').fadeIn();
+});
+
+$(function () {
+  $('.navbar').on('activate.bs.scrollspy', function () {
+    var currentItem = $(".nav li.active > a").text();
+    console.log(currentItem);
+  });
 });
 
 new WOW().init();
