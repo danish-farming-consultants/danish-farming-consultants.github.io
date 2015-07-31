@@ -24,4 +24,8 @@ $('body').scrollspy({
   offset: 130
 });
 
+$('#see-more').click(function () {
+  $('#more-news').fadeIn();
+});
+
 new WOW().init();
