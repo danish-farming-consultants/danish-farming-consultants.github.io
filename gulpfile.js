@@ -13,7 +13,18 @@
     return connect.server({
       root: '.',
       port: 8080,
-      livereload: true
+      livereload: true,
+      middleware: function () {
+        function createProxy(path) {
+          var proxy = require('proxy-middleware');
+          return proxy({
+            port: 80,
+            pathname: path,
+            route: path
+          });
+        }
+        return [createProxy('/api')];
+      }
     });
   });
 
