@@ -25,18 +25,18 @@
 <body>
 
 <div class="container">
-  <div class="row" style="padding-top: 15px">
+  <div class="row with-top-padding">
     <div id="offers-placeholder"></div>
   </div>
   <div class="row">
-    <div class="col-md-4 col-md-offset-4" style="padding: 15px">
-      <input type="button" class="btn btn-green center-block" value="Zapisz">
+    <div class="col-md-4 col-md-offset-4 with-padding">
+      <input id="btn-offers-save" type="button" class="btn btn-green center-block" value="Zapisz">
     </div>
   </div>
 </div>
 
 <script id="offerTemplate" type="text/html">
-  <div class="col-md-4">
+  <div class="offer-container col-md-4">
     <input class="id" type="text" value="<%=id%>" style="display: none">
     <div class="row">
       <div class="col-xs-6">Nazwa</div>
@@ -57,26 +57,26 @@
   </div>
 </script>
 
-<div class="container">
-  <div class="row" style="padding-top: 15px">
+<div id="create-news-container" class="container">
+  <div class="row with-top-padding">
     <div class="col-md-9">
       <div class="row">
         <div class="col-xs-1">Tytuł</div>
-        <div class="col-xs-1"><input class="name" type="text"></div>
+        <div class="col-xs-11"><input class="title full-width" type="text"></div>
       </div>
       <div class="row">
         <div class="col-xs-1">Data</div>
-        <div class="col-xs-1"><input id="createDatepicker" class="datepicker" type="text"></div>
+        <div class="col-xs-1"><input id="createDatepicker" class="datepicker createdDate" type="text"></div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <textarea rows="8" style="width: 100%"></textarea>
+          <textarea class="body full-width" rows="8"></textarea>
         </div>
       </div>
     </div>
     <div class="col-md-3">
-      <div class="row" style="padding: 10px">
-        <input type="button" class="btn btn-green center-block" value="Dodaj">
+      <div class="row with-padding">
+        <input id="btn-news-create" type="button" class="btn btn-green center-block" value="Dodaj">
       </div>
     </div>
   </div>
@@ -86,29 +86,28 @@
 
 <script id="newsTemplate" type="text/html">
   <div class="container">
-    <div class="row" style="padding-top: 15px">
+    <div id="news-<%=id%>" class="row with-top-padding">
       <div class="col-md-9">
-        <input class="id" type="text" value="<%=id%>" style="display: none">
         <div class="row">
           <div class="col-xs-1">Tytuł</div>
-          <div class="col-xs-11"><input class="name" type="text" value="<%=title%>" style="width: 100%"></div>
+          <div class="col-xs-11"><input class="title full-width" type="text" value="<%=title%>"></div>
         </div>
         <div class="row">
           <div class="col-xs-1">Data</div>
-          <div class="col-xs-3"><input class="datepicker" type="text" value="<%=createdDate%>"></div>
+          <div class="col-xs-3"><input class="datepicker createdDate" type="text" value="<%=createdDate%>"></div>
         </div>
         <div class="row">
           <div class="col-xs-12">
-            <textarea rows="8" style="width: 100%"><%=body%></textarea>
+            <textarea class="body full-width" rows="8"><%=body%></textarea>
           </div>
         </div>
       </div>
       <div class="col-md-3">
-        <div class="row" style="padding: 10px">
-          <input type="button" class="btn btn-green center-block" data-id="<%=id%>" value="Zapisz">
+        <div class="row with-padding">
+          <input type="button" class="btn btn-green center-block btn-news-save" data-id="<%=id%>" value="Zapisz">
         </div>
-        <div class="row" style="padding: 10px">
-          <input type="button" class="btn btn-green center-block" data-id="<%=id%>" value="Usuń">
+        <div class="row with-padding">
+          <input type="button" class="btn btn-green center-block btn-news-delete" data-id="<%=id%>" value="Usuń">
         </div>
       </div>
     </div>
@@ -120,7 +119,8 @@
 <script src="js/bootstrap-datepicker.min.js"></script>
 <script src="js/bootstrap-datepicker.pl.min.js"></script>
 <script src="js/tmpl.js"></script>
-<script src="js/admin.js" charset="utf-8"></script>
+<script src="js/api.js"></script>
+<script src="js/admin.js"></script>
 
 </body>
 </html>

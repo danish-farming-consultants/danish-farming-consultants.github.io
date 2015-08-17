@@ -5,7 +5,7 @@
   var connect = require('gulp-connect');
 
   gulp.task('reload', function () {
-    return gulp.src(['./*.html', './js/**/*.js', './css/**/*.css'])
+    return gulp.src(['./admin.html', './index.html', './js/**/*.js', './css/**/*.css'])
       .pipe(connect.reload());
   });
 

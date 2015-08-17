@@ -31,11 +31,11 @@ $(function () {
 
 $(function () {
   var seeMoreIndex = 0;
-  var seeMoreSize = $('.news-row').length;
   $('#see-more').click(function () {
+    var seeMoreSize = $('.news-row').length;
     seeMoreIndex++;
     $('#news-row-' + seeMoreIndex).fadeIn();
-    if (seeMoreIndex > seeMoreSize) {
+    if (seeMoreIndex + 1 >= seeMoreSize) {
       $('#see-more').hide();
     }
   });
@@ -44,7 +44,7 @@ $(function () {
 new WOW().init();
 
 $(function () {
-  $.getJSON('/api/getOffers.php', function (offers) {
+  $.getJSON(api.getOffers, function (offers) {
     var offersTemplates = $.map(offers, function (offer) {
       return tmpl('offerTemplate', offer);
     });
@@ -52,7 +52,7 @@ $(function () {
     $('#offers-placeholder').replaceWith(offersHtml);
   });
 
-  $.getJSON('/api/getNews.php', function (news) {
+  $.getJSON(api.getNews, function (news) {
     function splitToThreeElementsChunks(array) {
       var chunks = [];
       for (var i = 0, j = array.length; i < j; i += 3) {
@@ -78,7 +78,6 @@ $(function () {
       if (index > 0) visible = 'style="display: none; padding-top: 0;"';
       return '<div id="news-row-' + index + '" class="news-row col-eq-height row text-justify" ' + visible + '>' + chunkHtml + '</div>';
     });
-    console.log(chunksHtmls.join(''));
     var html = chunksHtmls.join('');
     $('#news-container').replaceWith(html);
   });

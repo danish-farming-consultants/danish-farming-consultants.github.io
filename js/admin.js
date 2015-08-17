@@ -12,16 +12,108 @@ $(function () {
     $('#createDatepicker').datepicker('update', new Date());
   }
 
-  $.getJSON('/api/getNews.php', function (news) {
+  function initNewsSaveButtons() {
+    $('.btn-news-save').click(function () {
+      var id = $(this).data('id');
+      var container = $('#news-' + id);
+      var news = {
+        id: id,
+        title: container.find('.title').val(),
+        createdDate: container.find('.createdDate').val(),
+        body: container.find('.body').val()
+      };
+      $.ajax({
+        type: 'PUT',
+        url: api.postNews,
+        data: JSON.stringify(news),
+        contentType : 'application/json',
+        success: function () {
+          location.reload();
+        }
+      })
+    });
+  }
+
+  function initNewsCreateButton() {
+    $('#btn-news-create').click(function () {
+      var container = $('#create-news-container');
+      var news = {
+        title: container.find('.title').val(),
+        createdDate: container.find('.createdDate').val(),
+        body: container.find('.body').val()
+      };
+      $.ajax({
+        type: 'POST',
+        url: api.postNews,
+        data: JSON.stringify(news),
+        contentType : 'application/json',
+        success: function () {
+          location.reload();
+        }
+      })
+    });
+  }
+
+  function initNewsDeleteButtons() {
+    $('.btn-news-delete').click(function () {
+      var id = $(this).data('id');
+      var news = {
+        id: id
+      };
+      $.ajax({
+        type: 'DELETE',
+        url: api.deleteNews,
+        data: JSON.stringify(news),
+        contentType : 'application/json',
+        success: function () {
+          location.reload();
+        }
+      })
+    });
+  }
+
+  function initOffersSaveButton() {
+    function saveOffer(offer) {
+      return $.ajax({
+        type: 'PUT',
+        url: api.putOffers,
+        data: JSON.stringify(offer),
+        contentType : 'application/json'
+      })
+    }
+    $('#btn-offers-save').click(function () {
+      var offersPromises = $('.offer-container').map(function () {
+        var container = $(this);
+        var offer = {
+          id: container.find('.id').val(),
+          name: container.find('.name').val(),
+          amount: container.find('.amount').val(),
+          weightMin: container.find('.weightMin').val(),
+          weightMax: container.find('.weightMax').val()
+        };
+        return saveOffer(offer);
+      });
+      $.when(offersPromises).done(function () {
+        location.reload();
+      });
+    });
+
+  }
+
+  $.getJSON(api.getNews, function (news) {
     var newsTermplates = $.map(news, function (singleNews) {
       return tmpl('newsTemplate', singleNews);
     });
     var newsTermplatesHtml = newsTermplates.join('');
     $('#news-placeholder').replaceWith(newsTermplatesHtml);
     initDatepickers();
+    initNewsCreateButton();
+    initNewsSaveButtons();
+    initNewsDeleteButtons();
+    initOffersSaveButton();
   });
 
-  $.getJSON('/api/getOffers.php', function (offers) {
+  $.getJSON(api.getOffers, function (offers) {
     var offersTemplates = $.map(offers, function (offer) {
       return tmpl('offerTemplate', offer);
     });
