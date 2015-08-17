@@ -49,6 +49,11 @@ $(function () {
       sections.not(currentItem).transition({ opacity: 0.6 }, 1500);
     });
   })();
+
+  $('.img-info').each(function () {
+    var width = $(this).width();
+    $(this).css('margin-left', -width/2);
+  });
 });
 
 $(function () {
@@ -102,5 +107,10 @@ $(function () {
     });
     var html = chunksHtmls.join('');
     $('#news-container').replaceWith(html);
+  });
+
+  $.getJSON(api.getOffersInfos, function (offersInfos) {
+    var offerInfo = offersInfos[0];
+    $('#offer-info').text(offerInfo.title);
   });
 });

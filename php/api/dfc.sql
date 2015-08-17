@@ -25,3 +25,10 @@ create table offers (
 insert into offers (id, name, amount, weightMin, weightMax) values (1, 'TUCZNIKI', 100, 60, 80);
 insert into offers (id, name, amount, weightMin, weightMax) values (2, 'TUCZNIKI', 110, 80, 90);
 insert into offers (id, name, amount, weightMin, weightMax) values (3, 'TUCZNIKI', 150, 100, 120);
+
+drop table if exists offersInfo;
+
+create table offersInfo (
+  id integer primary key autoincrement,
+  title text not null
+);

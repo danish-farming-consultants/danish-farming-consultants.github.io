@@ -93,7 +93,13 @@ $(function () {
         };
         return saveOffer(offer);
       });
-      $.when(offersPromises).done(function () {
+      var offerInfoPromise = $.ajax({
+        type: 'POST',
+        url: api.putOffersInfos,
+        data: JSON.stringify({id: $('#offer-info-id').val(), title: $('#offer-info-title').val() }),
+        contentType : 'application/json'
+      });
+      $.when(offersPromises, offerInfoPromise).done(function () {
         location.reload();
       });
     });
@@ -121,4 +127,9 @@ $(function () {
     $('#offers-placeholder').replaceWith(offersHtml);
   });
 
+  $.getJSON(api.getOffersInfos, function (offersInfos) {
+    var offerInfo = offersInfos[0];
+    $('#offer-info-id').val(offerInfo.id);
+    $('#offer-info-title').val(offerInfo.title);
+  });
 });
