@@ -6,6 +6,21 @@ $(window).scroll(function () {
   }
 });
 
+var entityMap = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': '&quot;',
+  "'": '&#39;',
+  "/": '&#x2F;'
+};
+
+function escapeHtml(string) {
+  return String(string).replace(/[&<>"'\/]/g, function (s) {
+    return entityMap[s];
+  });
+}
+
 $(function () {
   $('a.page-scroll').bind('click', function (event) {
     var $anchor = $(this);

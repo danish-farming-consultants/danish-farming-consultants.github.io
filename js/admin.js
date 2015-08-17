@@ -24,7 +24,7 @@ $(function () {
       };
       $.ajax({
         type: 'POST',
-        url: api.postNews,
+        url: api.putNews,
         data: JSON.stringify(news),
         contentType : 'application/json',
         success: function () {

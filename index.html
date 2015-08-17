@@ -118,8 +118,8 @@
 </section>
 
 <script id="offerTemplate" type="text/html">
-  <div id="offer-<%=id%>" class="col-md-4 with-border">
-    <%=name%> liczba sztuk <%=amount%> w średniej wadze od <%=weightMin%> do <%=weightMax%>.
+  <div id="offer-<%=escapeHtml(id)%>" class="col-md-4 with-border">
+    <%=escapeHtml(name)%> liczba sztuk <%=escapeHtml(amount)%> w średniej wadze od <%=escapeHtml(weightMin)%> do <%=escapeHtml(weightMax)%>.
   </div>
 </script>
 
@@ -228,10 +228,10 @@
 </section>
 
 <script id="newsTemplate" type="text/html">
-  <div id="news-<%=id%>" class="col-md-4 with-border">
-    <p><strong><%=createdDate%></strong></p>
-    <p><strong><%=title%></strong></p>
-    <p><%=body%></p>
+  <div id="news-<%=escapeHtml(id)%>" class="col-md-4 with-border">
+    <p><strong><%=escapeHtml(createdDate)%></strong></p>
+    <p><strong><%=escapeHtml(title)%></strong></p>
+    <p><%=escapeHtml(body)%></p>
   </div>
 </script>
 
