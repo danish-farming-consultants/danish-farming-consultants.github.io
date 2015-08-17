@@ -6,8 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 header('Content-Type: application/json; charset=UTF-8');
 
-if (!($db = new SQLite3('dfs.sqlite3', SQLITE3_OPEN_READWRITE))) {
-    echo "<h2>" . $TEXT['dfs.sqlite3'] . "</h2>";
+if (!($db = new SQLite3('dfc.sqlite3', SQLITE3_OPEN_READWRITE))) {
+    echo "<h2>" . $TEXT['dfc.sqlite3'] . "</h2>";
     die();
 }
 

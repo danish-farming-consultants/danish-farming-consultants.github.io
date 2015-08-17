@@ -23,7 +23,7 @@ $(function () {
         body: container.find('.body').val()
       };
       $.ajax({
-        type: 'PUT',
+        type: 'POST',
         url: api.postNews,
         data: JSON.stringify(news),
         contentType : 'application/json',
@@ -61,7 +61,7 @@ $(function () {
         id: id
       };
       $.ajax({
-        type: 'DELETE',
+        type: 'POST',
         url: api.deleteNews,
         data: JSON.stringify(news),
         contentType : 'application/json',
@@ -75,7 +75,7 @@ $(function () {
   function initOffersSaveButton() {
     function saveOffer(offer) {
       return $.ajax({
-        type: 'PUT',
+        type: 'POST',
         url: api.putOffers,
         data: JSON.stringify(offer),
         contentType : 'application/json'

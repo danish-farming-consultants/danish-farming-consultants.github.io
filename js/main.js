@@ -23,10 +23,17 @@ $(function () {
     offset: 130
   });
 
-  $('.navbar').on('activate.bs.scrollspy', function () {
-    var currentItem = $(".nav li.active > a").text();
-    console.log(currentItem);
-  });
+  (function () {
+    var sections = $('section');
+    var currentItem = $(".nav li.active > a").attr('href');
+    sections.not(currentItem).css('opacity', '0.6');
+    $('.navbar').on('activate.bs.scrollspy', function () {
+      var currentItem = $(".nav li.active > a").attr('href');
+      sections.clearQueue();
+      $(currentItem).transition({ opacity: 1.0 }, 1500);
+      sections.not(currentItem).transition({ opacity: 0.6 }, 1500);
+    });
+  })();
 });
 
 $(function () {
