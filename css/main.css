@@ -135,6 +135,13 @@ a.btn-green {
   border-top: solid thin;
 }
 
+.img-info {
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  color: white;
+}
+
 @media (min-width: 767px) {
   .navbar {
     padding: 40px 0;
@@ -190,11 +197,17 @@ a.btn-green {
   .col-eq-height.row {
     display: table;
     padding: 80px;
+    table-layout: fixed;
   }
 
   .col-eq-height [class*="col-"] {
     float: none;
     display: table-cell;
+    width: 33%;
+    vertical-align: top;
+  }
+
+  .col-eq-height.text-middle [class*="col-"] {
     vertical-align: middle;
   }
 }

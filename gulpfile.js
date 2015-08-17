@@ -5,7 +5,7 @@
   var connect = require('gulp-connect');
 
   gulp.task('reload', function () {
-    return gulp.src('./**/*')
+    return gulp.src(['./*.html', './js/**/*.js', './css/**/*.css'])
       .pipe(connect.reload());
   });
 
@@ -18,7 +18,7 @@
         function createProxy(path) {
           var proxy = require('proxy-middleware');
           return proxy({
-            port: 80,
+            port: 8081,
             pathname: path,
             route: path
           });
@@ -29,7 +29,7 @@
   });
 
   gulp.task('watch', function () {
-    gulp.watch(['index.html', 'js/**/*.js', 'css/**/*.css'], ['reload']);
+    gulp.watch(['./admin.html', './index.html', './js/**/*.js', './css/**/*.css'], ['reload']);
   });
 
   gulp.task('default', ['connect', 'watch']);
