@@ -89,7 +89,8 @@ $(function () {
           name: container.find('.name').val(),
           amount: container.find('.amount').val(),
           weightMin: container.find('.weightMin').val(),
-          weightMax: container.find('.weightMax').val()
+          weightMax: container.find('.weightMax').val(),
+          price: container.find('.price').val()
         };
         return saveOffer(offer);
       });

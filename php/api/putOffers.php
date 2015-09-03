@@ -31,9 +31,10 @@ $name = $db->escapeString(@$json['name']);
 $amount = $db->escapeString(@$json['amount']);
 $weightMin = $db->escapeString(@$json['weightMin']);
 $weightMax = $db->escapeString(@$json['weightMax']);
+$price = $db->escapeString(@$json['price']);
 
-if (is_numeric($id) && $name != "" && is_numeric($amount) && is_numeric($weightMin) && is_numeric($weightMax)) {
-    $db->query("update offers set name = '$name', amount = '$amount', weightMin = '$weightMin', weightMax = '$weightMax' where id = $id");
+if (is_numeric($id) && $name != "" && is_numeric($amount) && is_numeric($weightMin) && is_numeric($weightMax) && is_numeric($price)) {
+    $db->query("update offers set name = '$name', amount = '$amount', weightMin = '$weightMin', weightMax = '$weightMax', price = '$price' where id = $id");
     echo json_encode($json);
 } else {
     header("HTTP/1.0 422 Unprocessable Entity");

@@ -210,6 +210,13 @@ a.btn-green {
     vertical-align: top;
   }
 
+  .col-eq-height-4 [class*="col-"] {
+    float: none;
+    display: table-cell;
+    width: 25%;
+    vertical-align: top;
+  }
+
   .col-eq-height.text-middle [class*="col-"] {
     vertical-align: middle;
   }

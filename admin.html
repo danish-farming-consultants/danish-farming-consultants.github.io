@@ -47,23 +47,27 @@
 </div>
 
 <script id="offerTemplate" type="text/html">
-  <div class="offer-container col-md-4">
+  <div class="offer-container col-md-3">
     <input class="id" type="text" value="<%=id%>" style="display: none">
     <div class="row">
-      <div class="col-xs-6">Nazwa</div>
-      <div class="col-xs-6"><input class="name" type="text" value="<%=name%>"></div>
+      <div class="col-xs-4">Nazwa</div>
+      <div class="col-xs-4"><input class="name" type="text" value="<%=name%>"></div>
     </div>
     <div class="row">
-      <div class="col-xs-6">liczba</div>
-      <div class="col-xs-6"><input class="amount" type="text" value="<%=amount%>"></div>
+      <div class="col-xs-4">liczba</div>
+      <div class="col-xs-4"><input class="amount" type="text" value="<%=amount%>"></div>
     </div>
     <div class="row">
-      <div class="col-xs-6">waga min</div>
-      <div class="col-xs-6"><input class="weightMin" type="text" value="<%=weightMin%>"></div>
+      <div class="col-xs-4">waga min</div>
+      <div class="col-xs-4"><input class="weightMin" type="text" value="<%=weightMin%>"></div>
     </div>
     <div class="row">
-      <div class="col-xs-6">waga max</div>
-      <div class="col-xs-6"><input class="weightMax" type="text" value="<%=weightMax%>"></div>
+      <div class="col-xs-4">waga max</div>
+      <div class="col-xs-4"><input class="weightMax" type="text" value="<%=weightMax%>"></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4">cena</div>
+      <div class="col-xs-4"><input class="price" type="text" value="<%=price%>"></div>
     </div>
   </div>
 </script>
