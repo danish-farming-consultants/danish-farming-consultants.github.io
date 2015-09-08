@@ -1,6 +1,21 @@
-[
-  {
-    "id": 1,
-    "title": "oferta sprzeda\u017cy na tydzie\u0144 numer 29, tj. 29.06.2015 - 05.07.2015"
-  }
-]
+<?php
+if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+    header("HTTP/1.0 404 Not Found");
+    die();
+}
+
+header('Content-Type: application/json; charset=UTF-8');
+
+if (!($db = new SQLite3('dfc.sqlite3', SQLITE3_OPEN_READWRITE))) {
+    echo "<h2>" . $TEXT['dfc.sqlite3'] . "</h2>";
+    die();
+}
+
+$offersInfosAsJson = array();
+$offersInfos = $db->query('select * from offersInfos order by id');
+while ($offerInfo = $offersInfos->fetchArray(SQLITE3_ASSOC)) {
+    $offersInfosAsJson[] = $offerInfo;
+}
+echo json_encode($offersInfosAsJson);
+
+$db->close();
