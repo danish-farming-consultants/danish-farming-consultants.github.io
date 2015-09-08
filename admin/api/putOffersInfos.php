@@ -10,6 +10,7 @@ if (!($db = new SQLite3('/home/dfcpl/domains/dfc.slask.pl/dfc.sqlite3', SQLITE3_
     echo "<h2>" . $TEXT['dfc.sqlite3'] . "</h2>";
     die();
 }
+$db->busyTimeout(5000);
 
 function isJson($string){
     return is_string($string) && is_object(json_decode($string)) && (json_last_error() == JSON_ERROR_NONE) ? true : false;
@@ -30,7 +31,7 @@ $id = $db->escapeString(@$json['id']);
 $title = $db->escapeString(@$json['title']);
 
 if (is_numeric($id) && $title != "") {
-    $db->query("update offersInfos set title = '$title' where id = $id");
+    $db->exec("update offersInfos set title = '$title' where id = $id");
     echo json_encode($json);
 } else {
     header("HTTP/1.0 422 Unprocessable Entity");

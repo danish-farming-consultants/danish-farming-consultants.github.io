@@ -100,7 +100,8 @@ $(function () {
         data: JSON.stringify({id: $('#offer-info-id').val(), title: $('#offer-info-title').val() }),
         contentType : 'application/json'
       });
-      $.when(offersPromises, offerInfoPromise).done(function () {
+      offersPromises.push(offerInfoPromise);
+      $.when.apply($, offersPromises).done(function () {
         location.reload();
       });
     });

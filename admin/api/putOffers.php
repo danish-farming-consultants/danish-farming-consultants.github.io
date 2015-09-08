@@ -10,6 +10,7 @@ if (!($db = new SQLite3('/home/dfcpl/domains/dfc.slask.pl/dfc.sqlite3', SQLITE3_
     echo "<h2>" . $TEXT['dfc.sqlite3'] . "</h2>";
     die();
 }
+$db->busyTimeout(5000);
 
 function isJson($string){
     return is_string($string) && is_object(json_decode($string)) && (json_last_error() == JSON_ERROR_NONE) ? true : false;
@@ -34,7 +35,7 @@ $weightMax = $db->escapeString(@$json['weightMax']);
 $price = $db->escapeString(@$json['price']);
 
 if (is_numeric($id) && $name != "" && is_numeric($amount) && is_numeric($weightMin) && is_numeric($weightMax) && is_numeric($price)) {
-    $db->query("update offers set name = '$name', amount = '$amount', weightMin = '$weightMin', weightMax = '$weightMax', price = '$price' where id = $id");
+    $db->exec("update offers set name = '$name', amount = '$amount', weightMin = '$weightMin', weightMax = '$weightMax', price = '$price' where id = $id");
     echo json_encode($json);
 } else {
     header("HTTP/1.0 422 Unprocessable Entity");

@@ -32,9 +32,9 @@ $body = $db->escapeString(@$json['body']);
 
 if ($title != "" && $body != "") {
     if ($createdDate != "") {
-        $db->query("insert into news (createdDate, title, body) values ('$createdDate', '$title', '$body')");
+        $db->exec("insert into news (createdDate, title, body) values ('$createdDate', '$title', '$body')");
     } else {
-        $db->query("insert into news (title, body) values ('$title', '$body')");
+        $db->exec("insert into news (title, body) values ('$title', '$body')");
     }
     $id = $db->lastInsertRowid();
     $news = $db->query("select * from news where id = $id")->fetchArray(SQLITE3_ASSOC);

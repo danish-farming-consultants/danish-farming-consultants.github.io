@@ -28,7 +28,7 @@ $json = getJsonFromBody();
 
 $id = $db->escapeString(@$json['id']);
 if (is_numeric($id)) {
-    $db->query("delete from news where id = $id");
+    $db->exec("delete from news where id = $id");
     echo json_encode($json);
 } else {
     header("HTTP/1.0 422 Unprocessable Entity");

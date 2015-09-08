@@ -32,7 +32,7 @@ $title = $db->escapeString(@$json['title']);
 $body = $db->escapeString(@$json['body']);
 
 if (is_numeric($id) && $createdDate != "" && $title != "" && $body != "") {
-    $db->query("update news set createdDate = '$createdDate', title = '$title', body = '$body' where id = $id");
+    $db->exec("update news set createdDate = '$createdDate', title = '$title', body = '$body' where id = $id");
     echo json_encode($json);
 } else {
     header("HTTP/1.0 422 Unprocessable Entity");
