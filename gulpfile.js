@@ -5,7 +5,7 @@
   var connect = require('gulp-connect');
 
   gulp.task('reload', function () {
-    return gulp.src(['./admin.html', './index.html', './js/**/*.js', './css/**/*.css'])
+    return gulp.src(['./admin/index.html', './index.html', './js/**/*.js', './css/**/*.css'])
       .pipe(connect.reload());
   });
 
@@ -29,7 +29,7 @@
   });
 
   gulp.task('watch', function () {
-    gulp.watch(['./admin.html', './index.html', './js/**/*.js', './css/**/*.css'], ['reload']);
+    gulp.watch(['./admin/index.html', './index.html', './js/**/*.js', './css/**/*.css'], ['reload']);
   });
 
   gulp.task('default', ['connect', 'watch']);

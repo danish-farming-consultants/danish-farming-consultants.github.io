@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 header('Content-Type: application/json; charset=UTF-8');
 
-if (!($db = new SQLite3('dfc.sqlite3', SQLITE3_OPEN_READWRITE))) {
+if (!($db = new SQLite3('/home/dfcpl/domains/dfc.slask.pl/dfc.sqlite3', SQLITE3_OPEN_READWRITE))) {
     echo "<h2>" . $TEXT['dfc.sqlite3'] . "</h2>";
     die();
 }
@@ -26,16 +26,19 @@ function getJsonFromBody() {
 
 $json = getJsonFromBody();
 
-$id = $db->escapeString(@$json['id']);
-$name = $db->escapeString(@$json['name']);
-$amount = $db->escapeString(@$json['amount']);
-$weightMin = $db->escapeString(@$json['weightMin']);
-$weightMax = $db->escapeString(@$json['weightMax']);
-$price = $db->escapeString(@$json['price']);
+$createdDate = $db->escapeString(@$json['createdDate']);
+$title = $db->escapeString(@$json['title']);
+$body = $db->escapeString(@$json['body']);
 
-if (is_numeric($id) && $name != "" && is_numeric($amount) && is_numeric($weightMin) && is_numeric($weightMax) && is_numeric($price)) {
-    $db->query("update offers set name = '$name', amount = '$amount', weightMin = '$weightMin', weightMax = '$weightMax', price = '$price' where id = $id");
-    echo json_encode($json);
+if ($title != "" && $body != "") {
+    if ($createdDate != "") {
+        $db->query("insert into news (createdDate, title, body) values ('$createdDate', '$title', '$body')");
+    } else {
+        $db->query("insert into news (title, body) values ('$title', '$body')");
+    }
+    $id = $db->lastInsertRowid();
+    $news = $db->query("select * from news where id = $id")->fetchArray(SQLITE3_ASSOC);
+    echo json_encode($news);
 } else {
     header("HTTP/1.0 422 Unprocessable Entity");
     die();
