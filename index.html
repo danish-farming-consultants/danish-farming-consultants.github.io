@@ -231,7 +231,7 @@
   <div id="news-<%=escapeHtml(id)%>" class="col-md-4 with-border">
     <p><strong><%=escapeHtml(createdDate)%></strong></p>
     <p><strong><%=escapeHtml(title)%></strong></p>
-    <p><%=escapeHtml(body)%></p>
+    <p><%=marked(body, {sanitize: true})%></p>
   </div>
 </script>
 
@@ -250,6 +250,7 @@
 <script src="js/jquery.transit.js"></script>
 <script src="js/wow.min.js"></script>
 <script src="js/tmpl.js"></script>
+<script src="js/marked.js"></script>
 <script src="js/api.js"></script>
 <script src="js/main.js"></script>
 

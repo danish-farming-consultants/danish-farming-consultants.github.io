@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Password Protected Area"
+AuthUserFile /home/dfcpl/domains/dfc.slask.pl/.htpasswd
+Require valid-user
