@@ -1,67 +1,110 @@
-var NewsContainer = React.createClass({render() {
-  return (
-    <div>
-      <div>NewsContainer</div>
-      <NewNews />
-      <NewsTable />
-    </div>
-  );
+// * NewsAdminContainer
+//   * NewsCreateContainer
+//     * NewsEditor
+//     * NewsPreview
+//     * NewsCreateControls 
+//   * NewsEditContainerTable
+//     *[0-*] NewsEditContainer
+//       * NewsEditor
+//       * NewsPreview
+//       * NewsEditControls
+
+var NewsAdminContainer = React.createClass({
+  render() {
+    return (
+      <div>
+        <NewsCreateContainer />
+        <NewsEditContainerTable news={this.props.news} />
+      </div>
+    );
 }});
 
-var NewNews = React.createClass({render() {
-  return (
-    <div>
-      <div>NewNews</div>
-      <NewsPreview />
-    </div>
-  );
+var NewsCreateContainer = React.createClass({
+  render() {
+    return (
+      <div>
+        <NewsEditor news={SINGLE_NEWS} />
+        <NewsPreview body={''} />
+        <NewsCreateControls />
+      </div>
+    );
 }});
 
-var NewsTable = React.createClass({render() {
-  return (
-    <div>
-      <div>NewsTable</div>
-      <NewsRow />
-    </div>
-  );
+var NewsCreateControls = React.createClass({
+  render() {
+    return (
+      <div>
+        <div>NewsCreateControls</div>
+      </div>
+    );
 }});
 
-var NewsRow = React.createClass({render() {
-  return (
-    <div>
-      <div>NewsRow</div>
-      <NewsBody />
-      <NewsPreview />
-      <NewsBtns />
-    </div>
-  );
+var NewsEditContainerTable = React.createClass({
+  render() {
+    var rows = _.map(this.props.news, news => { return <NewsEditContainer news={news} /> });
+    return (
+      <div>
+        {rows}
+      </div>
+    );
 }});
 
-var NewsBody = React.createClass({render() {
-  return (
-    <div>
-      <div>NewNews</div>
-    </div>
-  );
+var NewsEditContainer = React.createClass({
+  render() {
+    return (
+      <div>
+        <NewsEditor news={this.props.news} />
+        <NewsPreview body={this.props.news.body} />
+        <NewsCreateControls />
+      </div>
+    );
 }});
 
-var NewsPreview = React.createClass({render() {
-  return (
-    <div>
-      <div>NewsPreview</div>
-    </div>
-  );
+var NewsEditor = React.createClass({
+  render() {
+    return (
+      <div>
+        <div>{this.props.news.title}</div>
+        <div>{this.props.news.createdDate}</div>
+        <div>{this.props.news.body}</div>
+      </div>
+    );
 }});
 
-var NewsBtns = React.createClass({render() {
-  return (
-    <div>
-      <div>NewsBtns</div>
-    </div>
-  );
+var NewsPreview = React.createClass({
+  rawMarkup() {
+    return { __html: marked(this.props.body, {sanitize: true}) };
+  },
+  render() {
+    return (
+      <div>
+        <div dangerouslySetInnerHTML={this.rawMarkup()}></div>
+      </div>
+    );
 }});
+
+var NewsEditControls = React.createClass({
+  render() {
+    return (
+      <div>
+        <div>NewsEditControls</div>
+      </div>
+    );
+}});
+
+var SINGLE_NEWS = {
+  "createdDate": "2015-09-30",
+  "title": "Create",
+  "body": "Create body."
+};
 
 var NEWS = [
+  {
+    "id": 23,
+    "createdDate": "2015-09-30",
+    "title": "Poszukujemy pracowników",
+    "body": "Aktualnie poszukujemy kandydatów na stanowisko:\nOBSŁUGA TRZODY CHLEWNEJ\n\n\nWymagania :\n* znajomość min. podstaw hodowli trzody chlewnej,\n* odpowiedzialność i zaangażowanie w pracę,\n* wykształcenie rolnicze (średnie) będzie dodatkowym atutem.\n\n\nOferujemy:\n* zatrudnienie w firmie o ugruntowanej pozycji na rynku,\n* dynamiczną i interesującą pracę,\n* możliwość doskonalenia posiadanych i zdobywania nowych umiejętności.\n \n\nPoza wynagrodzeniem zapewniamy:\n* pozafinansowy system motywacyjny oraz  pakiet socjalny m.in.: \n  * coroczny piknik dla wszystkich pracowników z rodzinami,\n  * imprezy integracyjne,\n  * dopłaty do wyjazdów zorganizowanych dla dzieci pracowników,\n  * bony okolicznościowe,\n  * dodatkowe ubezpieczenie.\n\n\nAplikacje wraz z oświadczeniem o zgodzie na przetwarzanie danych osobowych w celach rekrutacji przez Danish Farming Consultants Sp. zo.o. siedzibą w Rzeczycach przy ul. Piaskowej 16, (zgodnie z Ustawą z dn. 29.sierpnia 1997 o Ochronie Danych Osobowych Dz. U. Nr 133, poz. 883) prosimy przesyłać adres e-mail: [hr@dfc.slask.pl](mailto:hr@dfc.slask.pl) Jednocześnie zastrzegamy sobie prawo do kontaktu wyłącznie z wybranymi kandydatami."
+  },
   {
     "id": 24,
     "createdDate": "2015-09-30",
@@ -76,4 +119,4 @@ var NEWS = [
   }
 ];
 
-React.render(<NewsContainer news={NEWS} />, document.getElementById('news'));
+React.render(<NewsAdminContainer news={NEWS} />, document.getElementById('news'));
