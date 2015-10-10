@@ -1,7 +1,7 @@
 var NewsAdminContainer = React.createClass({
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <NewsCreateContainer news={this.props.singleNews} />
         <NewsEditContainerTable news={this.props.news} />
       </div>
@@ -11,9 +11,8 @@ var NewsAdminContainer = React.createClass({
 var NewsCreateContainer = React.createClass({
   render() {
     return (
-      <div>
+      <div className='row with-top-padding'>
         <NewsEditor news={this.props.news} />
-        <NewsPreview body={this.props.news.body} />
         <NewsCreateControls />
       </div>
     );
@@ -22,8 +21,8 @@ var NewsCreateContainer = React.createClass({
 var NewsCreateControls = React.createClass({
   render() {
     return (
-      <div>
-        <div>NewsCreateControls</div>
+      <div className='col-md-3'>
+          NewsCreateControls
       </div>
     );
 }});
@@ -32,7 +31,7 @@ var NewsEditContainerTable = React.createClass({
   render() {
     var rows = _.map(this.props.news, news => { return <NewsEditContainer news={news} /> });
     return (
-      <div>
+      <div className='row'>
         {rows}
       </div>
     );
@@ -43,8 +42,7 @@ var NewsEditContainer = React.createClass({
     return (
       <div>
         <NewsEditor news={this.props.news} />
-        <NewsPreview body={this.props.news.body} />
-        <NewsCreateControls />
+        <NewsEditControls />
       </div>
     );
 }});
@@ -52,10 +50,24 @@ var NewsEditContainer = React.createClass({
 var NewsEditor = React.createClass({
   render() {
     return (
-      <div>
-        <div>{this.props.news.title}</div>
-        <div>{this.props.news.createdDate}</div>
-        <div>{this.props.news.body}</div>
+      <div className='col-md-9'>
+        <div className='row'>
+          <div className="col-xs-1">Tytuł</div>
+          <div className='col-xs-11'>
+            <input type='text' className='title full-width' value={this.props.news.title} />
+          </div>
+        </div>
+        <div className='row'>
+          <div className="col-xs-1">Data</div>
+          <div className='col-xs-11'>
+            <input type='text' className='datepicker createdDate' value={this.props.news.createdDate} />
+          </div>
+        </div>
+        <div className='row'>
+          <div className='col-xs-12'>
+            <textarea className='body full-width' rows='8' value={this.props.news.body}></textarea>
+          </div>
+        </div>
       </div>
     );
 }});
@@ -76,15 +88,15 @@ var NewsEditControls = React.createClass({
   render() {
     return (
       <div>
-        <div>NewsEditControls</div>
+        <div className='col-md-3'>NewsEditControls</div>
       </div>
     );
 }});
 
 var SINGLE_NEWS = {
   "createdDate": "2015-09-30",
-  "title": "Create",
-  "body": "**Create body.**"
+  "title": "To jest tytul.",
+  "body": "**To jest tytul.**"
 };
 
 var NEWS = [
