@@ -1,7 +1,7 @@
-(function () {
+var tmpl = (function () {
   var cache = {};
 
-  this.tmpl = function tmpl(str, data) {
+  return function tmpl(str, data) {
     var fn = !/\W/.test(str) ?
       cache[str] = cache[str] ||
         tmpl(document.getElementById(str).innerHTML) :

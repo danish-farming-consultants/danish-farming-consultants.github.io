@@ -1,5 +1,4 @@
 .idea/
 node_modules/
-*.iml
-*.log
-*.sqlite3
+app/lib
+dist/

@@ -1,23 +1,46 @@
 var gulp = require('gulp');
+var babel = require('gulp-babel');
 var connect = require('gulp-connect');
+var proxy = require('proxy-middleware');
+var sourcemaps = require('gulp-sourcemaps');
+var del = require('del');
+var runSequence = require('run-sequence');
 
 var paths = {
-  assets: ['./admin/**/*.html', './index.html', './js/**/*.js', './css/**/*.css']
-}
+  scripts: 'app/js/**/*.js',
+  assets: ['app/index.html', 'app/admin/**/*.html', 'app/favicon.ico', 'app/.htaccess', 'app/lib/**/*', 'app/css/**/*.css', 'app/fonts/**/*', 'app/img/**/*']
+};
 
-gulp.task('reload', function () {
-  return gulp.src(paths.assets)
+gulp.task('clean', function() {
+  return del(['dist']);
+});
+
+gulp.task('clean-bower', function() {
+  return del(['app/lib']);
+});
+
+gulp.task('js', function () {
+  return gulp.src(paths.scripts)
+    .pipe(sourcemaps.init())
+    .pipe(babel())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('dist/js'))
+    .pipe(connect.reload());
+});
+
+gulp.task('assets', function () {
+  return gulp.src(paths.assets, {'base' : 'app'})
+    .pipe(gulp.dest('dist'))
     .pipe(connect.reload());
 });
 
 gulp.task('connect', function () {
   return connect.server({
-    root: '.',
+    root: 'dist',
     port: 8080,
     livereload: true,
     middleware: function () {
       function createProxy(path) {
-        var proxy = require('proxy-middleware');
         return proxy({
           port: 8081,
           pathname: path,
@@ -30,7 +53,13 @@ gulp.task('connect', function () {
 });
 
 gulp.task('watch', function () {
-  gulp.watch(paths.assets, ['reload']);
+  gulp.watch(paths.scripts, ['js']);
+  gulp.watch(paths.assets, ['assets']);
 });
 
-gulp.task('default', ['connect', 'watch']);
+gulp.task('build', ['js', 'assets']);
+gulp.task('dist', function (callback) {
+  runSequence('clean', 'build', callback);
+});
+gulp.task('server', ['build', 'connect', 'watch']);
+gulp.task('default', ['server']);

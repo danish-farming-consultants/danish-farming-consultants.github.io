@@ -1,0 +1,16 @@
+{
+  "name": "dfc",
+  "dependencies": {
+    "bootstrap": "3.3.x",
+    "jquery": "2.1.x",
+    "react": "0.13.x",
+    "lodash": "3.10.x",
+    "marked": "0.3.x",
+    "signals": "1.0.x",
+    "bootstrap-datepicker": "1.4.x",
+    "jquery.easing": "1.3.x",
+    "jquery.transit": "0.9.x",
+    "wow": "1.1.x",
+    "animate.less": "git@github.com:daneden/animate.css.git#3.4.x"
+  }
+}
