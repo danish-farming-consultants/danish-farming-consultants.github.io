@@ -22,8 +22,10 @@ var NewsCreateControls = React.createClass({
   render() {
     return (
       <div className='col-md-3'>
-          NewsCreateControls
+      <div className='row with-padding'>
+        <input type='button' className='btn btn-primary center-block' value='Dodaj' />
       </div>
+    </div>
     );
 }});
 
@@ -50,7 +52,7 @@ var NewsEditContainer = React.createClass({
 var NewsEditor = React.createClass({
   render() {
     return (
-      <div className='col-md-9'>
+      <div className='col-md-9 with-top-padding'>
         <div className='row'>
           <div className="col-xs-1">Tytuł</div>
           <div className='col-xs-11'>
@@ -88,7 +90,14 @@ var NewsEditControls = React.createClass({
   render() {
     return (
       <div>
-        <div className='col-md-3'>NewsEditControls</div>
+        <div className='col-md-3'>
+          <div className='row with-padding'>
+            <input type="button" className='btn btn-primary center-block btn-news-save' value='Zapisz' />
+          </div>
+          <div className='row with-padding'>
+            <input type="button" className='btn btn-primary center-block btn-news-delete' value='Usuń' />
+          </div>
+        </div>
       </div>
     );
 }});
