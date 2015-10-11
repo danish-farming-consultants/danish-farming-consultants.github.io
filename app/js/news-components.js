@@ -1,4 +1,4 @@
-var NewsAdminContainer = React.createClass({
+const NewsAdminContainer = React.createClass({
   render() {
     return (
       <div className='container'>
@@ -8,20 +8,20 @@ var NewsAdminContainer = React.createClass({
     );
 }});
 
-var NewsCreateContainer = React.createClass({
+const NewsCreateContainer = React.createClass({
   render() {
     return (
-      <div className='row with-top-padding'>
+      <div className='row'>
         <NewsEditor news={this.props.news} />
         <NewsCreateControls />
       </div>
     );
 }});
 
-var NewsCreateControls = React.createClass({
+const NewsCreateControls = React.createClass({
   render() {
     return (
-      <div className='col-md-3'>
+      <div className='col-md-1'>
       <div className='row with-padding'>
         <input type='button' className='btn btn-primary center-block' value='Dodaj' />
       </div>
@@ -29,9 +29,9 @@ var NewsCreateControls = React.createClass({
     );
 }});
 
-var NewsEditContainerTable = React.createClass({
+const NewsEditContainerTable = React.createClass({
   render() {
-    var rows = _.map(this.props.news, news => { return <NewsEditContainer news={news} /> });
+    const rows = _.map(this.props.news, news => { return <NewsEditContainer news={news} /> });
     return (
       <div className='row'>
         {rows}
@@ -39,7 +39,7 @@ var NewsEditContainerTable = React.createClass({
     );
 }});
 
-var NewsEditContainer = React.createClass({
+const NewsEditContainer = React.createClass({
   render() {
     return (
       <div>
@@ -49,7 +49,7 @@ var NewsEditContainer = React.createClass({
     );
 }});
 
-var NewsEditor = React.createClass({
+const NewsEditor = React.createClass({
   componentDidMount() {
     $(React.findDOMNode(this.refs.datepicker)).datepicker({
       format: 'yyyy-mm-dd',
@@ -58,10 +58,13 @@ var NewsEditor = React.createClass({
       autoclose: true,
       todayHighlight: true
     });
+
+    const preivewHeight = $(React.findDOMNode(this.refs.bodyPreview)).height();
+    $(React.findDOMNode(this.refs.bodyEditor)).css('height', preivewHeight);
   },
   render() {
     return (
-      <div className='col-md-9 with-top-padding'>
+      <div className='col-md-11 with-top-padding'>
         <div className='row'>
           <div className='col-xs-1'>Tytuł</div>
           <div className='col-xs-11'>
@@ -75,15 +78,18 @@ var NewsEditor = React.createClass({
           </div>
         </div>
         <div className='row'>
-          <div className='col-xs-12'>
-            <textarea className='full-width' rows='8' value={this.props.news.body}></textarea>
+          <div className='col-xs-6'>
+            <textarea className='full-width body-editor' value={this.props.news.body} ref='bodyEditor'></textarea>
+          </div>
+          <div className='col-xs-6 news-preview' ref='bodyPreview'>
+            <NewsPreview body={this.props.news.body} />
           </div>
         </div>
       </div>
     );
 }});
 
-var NewsPreview = React.createClass({
+const NewsPreview = React.createClass({
   rawMarkup() {
     return { __html: marked(this.props.body, {sanitize: true}) };
   },
@@ -95,11 +101,11 @@ var NewsPreview = React.createClass({
     );
 }});
 
-var NewsEditControls = React.createClass({
+const NewsEditControls = React.createClass({
   render() {
     return (
       <div>
-        <div className='col-md-3'>
+        <div className='col-md-1'>
           <div className='row with-padding'>
             <input type='button' className='btn btn-primary center-block' value='Zapisz' />
           </div>
@@ -111,13 +117,13 @@ var NewsEditControls = React.createClass({
     );
 }});
 
-var SINGLE_NEWS = {
+const SINGLE_NEWS = {
   "createdDate": "2015-09-30",
   "title": "To jest tytul.",
   "body": "**To jest tytul.**"
 };
 
-var NEWS = [
+const NEWS = [
   {
     "id": 22,
     "createdDate": "2015-09-30",

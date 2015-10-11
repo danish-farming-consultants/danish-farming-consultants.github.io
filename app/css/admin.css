@@ -13,3 +13,12 @@ input {
 .full-width {
     width: 100%;
 }
+
+.news-preview {
+    border-style: solid;
+    border-width: 1px;
+}
+
+.body-editor {
+  min-height: 150px;
+}
