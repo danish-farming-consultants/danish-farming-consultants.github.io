@@ -1,9 +1,60 @@
 const NewsAdminContainer = React.createClass({
+  onNewNewsEdit(id, createdDate, title, body) {
+    this.setState({
+      newNews: {
+        createdDate: createdDate,
+        title: title,
+        body: body
+      }
+    });
+  },
+  onNewsEdit(id, createdDate, title, body) {
+    const newNews = _.map(this.state.news, news => {
+      if (news.id === id) {
+        return { id: id, createdDate: createdDate, title: title, body: body };
+      } else {
+        return news;
+      }
+    });
+    this.setState({news: newNews});
+  },
+  emptyNews() {
+    return {
+      createdDate: new Date().toISOString().slice(0, 10),
+      title: '',
+      body: ''
+    }
+  },
+  onDelete(id) {
+    this.props.onDelete(id).done(() => {
+      this.setState({
+        news: _.filter(this.state.news, news => news.id !== id)
+      });
+    });
+  },
+  onCreate() {
+    const newNews = this.state.newNews;
+    this.props.onCreate(newNews.createdDate, newNews.title, newNews.body).done(saved => {
+      this.setState({
+        newNews: this.emptyNews(),
+        news: [saved].concat(this.state.news)
+      });
+    });
+  },
+  getInitialState() {
+    return {
+      newNews: this.emptyNews(),
+      news: []
+    };
+  },
+  componentDidMount() {
+    this.props.newsPromise.done(news => this.setState({news: news}));
+  },
   render() {
     return (
       <div className='container'>
-        <NewsCreateContainer news={this.props.singleNews} />
-        <NewsEditContainerTable news={this.props.news} />
+        <NewsCreateContainer news={this.state.newNews} onEdit={this.onNewNewsEdit} onCreate={this.onCreate} />
+        <NewsEditContainerTable news={this.state.news} onEdit={this.onNewsEdit} onSave={this.props.onSave} onDelete={this.onDelete} />
       </div>
     );
 }});
@@ -12,8 +63,8 @@ const NewsCreateContainer = React.createClass({
   render() {
     return (
       <div className='row'>
-        <NewsEditor news={this.props.news} />
-        <NewsCreateControls />
+        <NewsEditor news={this.props.news} onEdit={this.props.onEdit} />
+        <NewsCreateControls onCreate={this.props.onCreate} />
       </div>
     );
 }});
@@ -23,7 +74,7 @@ const NewsCreateControls = React.createClass({
     return (
       <div className='col-md-1'>
       <div className='row with-padding'>
-        <input type='button' className='btn btn-primary center-block' value='Dodaj' />
+        <input type='button' className='btn btn-primary center-block' value='Dodaj' onClick={this.props.onCreate} />
       </div>
     </div>
     );
@@ -31,7 +82,7 @@ const NewsCreateControls = React.createClass({
 
 const NewsEditContainerTable = React.createClass({
   render() {
-    const rows = _.map(this.props.news, news => { return <NewsEditContainer news={news} /> });
+    const rows = _.map(this.props.news, news => <NewsEditContainer news={news} onEdit={this.props.onEdit} onSave={this.props.onSave} onDelete={this.props.onDelete} />);
     return (
       <div className='row'>
         {rows}
@@ -43,24 +94,32 @@ const NewsEditContainer = React.createClass({
   render() {
     return (
       <div>
-        <NewsEditor news={this.props.news} />
-        <NewsEditControls />
+        <NewsEditor news={this.props.news} onEdit={this.props.onEdit} />
+        <NewsEditControls news={this.props.news} onSave={this.props.onSave} onDelete={this.props.onDelete} />
       </div>
     );
 }});
 
 const NewsEditor = React.createClass({
-  componentDidMount() {
-    $(React.findDOMNode(this.refs.datepicker)).datepicker({
+  initDatepicker() {
+    $(React.findDOMNode(this.refs.createdDate)).datepicker({
       format: 'yyyy-mm-dd',
       todayBtn: 'linked',
       language: 'pl',
       autoclose: true,
       todayHighlight: true
-    });
-
-    const preivewHeight = $(React.findDOMNode(this.refs.bodyPreview)).height();
-    $(React.findDOMNode(this.refs.bodyEditor)).css('height', preivewHeight);
+    }).on('changeDate', () => this.handleEdit());
+  },
+  handleEdit() {
+    this.props.onEdit(
+      this.props.news.id,
+      React.findDOMNode(this.refs.createdDate).value,
+      React.findDOMNode(this.refs.title).value,
+      React.findDOMNode(this.refs.body).value
+    );
+  },
+  componentDidMount() {
+    this.initDatepicker();
   },
   render() {
     return (
@@ -68,18 +127,18 @@ const NewsEditor = React.createClass({
         <div className='row'>
           <div className='col-xs-1'>Tytuł</div>
           <div className='col-xs-11'>
-            <input type='text' className='full-width' value={this.props.news.title} />
+            <input type='text' className='full-width' value={this.props.news.title} ref='title' onChange={this.handleEdit} />
           </div>
         </div>
         <div className='row'>
           <div className='col-xs-1'>Data</div>
           <div className='col-xs-11'>
-            <input type='text' value={this.props.news.createdDate} ref='datepicker' />
+            <input type='text' value={this.props.news.createdDate} ref='createdDate' onChange={this.handleEdit} />
           </div>
         </div>
         <div className='row'>
           <div className='col-xs-6'>
-            <textarea className='full-width body-editor' value={this.props.news.body} ref='bodyEditor'></textarea>
+            <textarea className='full-width body-editor' value={this.props.news.body} ref='body' onChange={this.handleEdit}></textarea>
           </div>
           <div className='col-xs-6 news-preview' ref='bodyPreview'>
             <NewsPreview body={this.props.news.body} />
@@ -103,45 +162,73 @@ const NewsPreview = React.createClass({
 
 const NewsEditControls = React.createClass({
   render() {
+    const news = this.props.news;
     return (
       <div>
         <div className='col-md-1'>
           <div className='row with-padding'>
-            <input type='button' className='btn btn-primary center-block' value='Zapisz' />
+            <input type='button' className='btn btn-primary center-block' value='Zapisz' onClick={() => this.props.onSave(news.id, news.createdDate, news.title, news.body)} />
           </div>
           <div className='row with-padding'>
-            <input type='button' className='btn btn-primary center-block' value='Usuń' />
+            <input type='button' className='btn btn-primary center-block' value='Usuń' onClick={() => this.props.onDelete(news.id)} />
           </div>
         </div>
       </div>
     );
 }});
 
-const SINGLE_NEWS = {
-  "createdDate": "2015-09-30",
-  "title": "To jest tytul.",
-  "body": "**To jest tytul.**"
-};
-
-const NEWS = [
-  {
-    "id": 22,
-    "createdDate": "2015-09-30",
-    "title": "Test 22",
-    "body": "* Test 1\n* Test 2\n* Test 3\n* Test 4"
-  },
-  {
-    "id": 24,
-    "createdDate": "2015-09-30",
-    "title": "Poszukujemy pracowników",
-    "body": "Aktualnie poszukujemy kandydatów na stanowisko:\nOBSŁUGA TRZODY CHLEWNEJ\n\n\nWymagania :\n* znajomość min. podstaw hodowli trzody chlewnej,\n* odpowiedzialność i zaangażowanie w pracę,\n* wykształcenie rolnicze (średnie) będzie dodatkowym atutem.\n\n\nOferujemy:\n* zatrudnienie w firmie o ugruntowanej pozycji na rynku,\n* dynamiczną i interesującą pracę,\n* możliwość doskonalenia posiadanych i zdobywania nowych umiejętności.\n \n\nPoza wynagrodzeniem zapewniamy:\n* pozafinansowy system motywacyjny oraz  pakiet socjalny m.in.: \n  * coroczny piknik dla wszystkich pracowników z rodzinami,\n  * imprezy integracyjne,\n  * dopłaty do wyjazdów zorganizowanych dla dzieci pracowników,\n  * bony okolicznościowe,\n  * dodatkowe ubezpieczenie.\n\n\nAplikacje wraz z oświadczeniem o zgodzie na przetwarzanie danych osobowych w celach rekrutacji przez Danish Farming Consultants Sp. zo.o. siedzibą w Rzeczycach przy ul. Piaskowej 16, (zgodnie z Ustawą z dn. 29.sierpnia 1997 o Ochronie Danych Osobowych Dz. U. Nr 133, poz. 883) prosimy przesyłać adres e-mail: [hr@dfc.slask.pl](mailto:hr@dfc.slask.pl) Jednocześnie zastrzegamy sobie prawo do kontaktu wyłącznie z wybranymi kandydatami."
-  },
-  {
-    "id": 23,
-    "createdDate": "2015-09-24",
-    "title": "Sprzedaż Brony Talerzowej",
-    "body": "Posiadamy do sprzedania używaną Bronę Talerzową Väderstad Carrier CR 650.\nSzczegóły oferty dostępne pod [adresem](http://www.traktorpool.de/pl/details/Scheibeneggen/Vaederstad-Carrier-CR-650/2509897/)."
+const news = (function () {
+  function success(msg) {
+    $.notify(msg, {type: 'success', delay: 1000, placement: {from: 'bottom', align: 'center'}});
   }
-];
 
-React.render(<NewsAdminContainer news={NEWS} singleNews={SINGLE_NEWS} />, document.getElementById('news'));
+  function error(msg) {
+    $.notify(msg, {type: 'danger', delay: 3000, placement: {from: 'bottom', align: 'center'}});
+  }
+
+  function create(createdDate, title, body) {
+    return $.ajax({
+      type: 'POST',
+      url: api.postNews,
+      data: JSON.stringify({createdDate: createdDate, title: title, body: body}),
+      contentType : 'application/json',
+      success: () => success('Artykuł został dodany!'),
+      error: () => error('Bład podczas dodawania!')
+    });
+  };
+
+  function deleteNews(id) {
+    return $.ajax({
+      type: 'DELETE',
+      url: api.deleteNews,
+      data: JSON.stringify({id: id}),
+      contentType : 'application/json',
+      success: () => success('Artykuł został usunięty!'),
+      error: () => error('Bład podczas usuwania!')
+    });
+  };
+
+  function save(id, createdDate, title, body) {
+    return $.ajax({
+      type: 'PUT',
+      url: api.putNews,
+      data: JSON.stringify({id:id, createdDate: createdDate, title: title, body: body}),
+      contentType : 'application/json',
+      success: () => success('Artykuł został zapisany!'),
+      error: () => error('Bład podczas zapisywania!')
+    });
+  };
+
+  function getAll() {
+    return $.getJSON(api.getNews);
+  };
+
+  return {
+    create: create,
+    save: save,
+    deleteNews: deleteNews,
+    getAll: getAll
+  }
+})();
+
+React.render(<NewsAdminContainer newsPromise={news.getAll()} onCreate={news.create} onSave={news.save} onDelete={news.deleteNews} />, document.getElementById('news'));

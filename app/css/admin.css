@@ -17,8 +17,9 @@ input {
 .news-preview {
     border-style: solid;
     border-width: 1px;
+    min-height: 250px;
 }
 
 .body-editor {
-  min-height: 150px;
+  min-height: 250px;
 }

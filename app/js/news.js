@@ -30,7 +30,7 @@ $(function () {
         success: function () {
           location.reload();
         }
-      })
+      });
     });
   }
 
@@ -50,7 +50,7 @@ $(function () {
         success: function () {
           location.reload();
         }
-      })
+      });
     });
   }
 
@@ -68,7 +68,7 @@ $(function () {
         success: function () {
           location.reload();
         }
-      })
+      });
     });
   }
 
