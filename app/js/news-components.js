@@ -1,7 +1,7 @@
 var NewsAdminContainer = React.createClass({
   render() {
     return (
-      <div className="container">
+      <div className='container'>
         <NewsCreateContainer news={this.props.singleNews} />
         <NewsEditContainerTable news={this.props.news} />
       </div>
@@ -50,24 +50,33 @@ var NewsEditContainer = React.createClass({
 }});
 
 var NewsEditor = React.createClass({
+  componentDidMount() {
+    $(React.findDOMNode(this.refs.datepicker)).datepicker({
+      format: 'yyyy-mm-dd',
+      todayBtn: 'linked',
+      language: 'pl',
+      autoclose: true,
+      todayHighlight: true
+    });
+  },
   render() {
     return (
       <div className='col-md-9 with-top-padding'>
         <div className='row'>
-          <div className="col-xs-1">Tytuł</div>
+          <div className='col-xs-1'>Tytuł</div>
           <div className='col-xs-11'>
-            <input type='text' className='title full-width' value={this.props.news.title} />
+            <input type='text' className='full-width' value={this.props.news.title} />
           </div>
         </div>
         <div className='row'>
-          <div className="col-xs-1">Data</div>
+          <div className='col-xs-1'>Data</div>
           <div className='col-xs-11'>
-            <input type='text' className='datepicker createdDate' value={this.props.news.createdDate} />
+            <input type='text' value={this.props.news.createdDate} ref='datepicker' />
           </div>
         </div>
         <div className='row'>
           <div className='col-xs-12'>
-            <textarea className='body full-width' rows='8' value={this.props.news.body}></textarea>
+            <textarea className='full-width' rows='8' value={this.props.news.body}></textarea>
           </div>
         </div>
       </div>
@@ -92,10 +101,10 @@ var NewsEditControls = React.createClass({
       <div>
         <div className='col-md-3'>
           <div className='row with-padding'>
-            <input type="button" className='btn btn-primary center-block btn-news-save' value='Zapisz' />
+            <input type='button' className='btn btn-primary center-block' value='Zapisz' />
           </div>
           <div className='row with-padding'>
-            <input type="button" className='btn btn-primary center-block btn-news-delete' value='Usuń' />
+            <input type='button' className='btn btn-primary center-block' value='Usuń' />
           </div>
         </div>
       </div>
