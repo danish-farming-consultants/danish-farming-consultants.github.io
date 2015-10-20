@@ -1,4 +1,11 @@
 $(function () {
+  function success(msg) {
+    $.notify(msg, {type: 'success', delay: 1000, placement: {from: 'bottom', align: 'center'}});
+  }
+
+  function error(msg) {
+    $.notify(msg, {type: 'danger', delay: 3000, placement: {from: 'bottom', align: 'center'}});
+  }
 
   function initOffersSaveButton() {
     function saveOffer(offer) {
@@ -29,9 +36,8 @@ $(function () {
         contentType : 'application/json'
       });
       offersPromises.push(offerInfoPromise);
-      $.when.apply($, offersPromises).done(function () {
-        location.reload();
-      });
+      $.when.apply($, offersPromises).done(() => success('Dane zostały zapisane!'));
+      $.when.apply($, offersPromises).fail(() => error('Bład podczas zapisu!'));
     });
   }
 

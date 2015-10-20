@@ -3,7 +3,7 @@
   "dependencies": {
     "bootstrap": "3.3.x",
     "jquery": "2.1.x",
-    "react": "0.13.x",
+    "react": "0.14.x",
     "lodash": "3.10.x",
     "marked": "0.3.x",
     "signals": "1.0.x",

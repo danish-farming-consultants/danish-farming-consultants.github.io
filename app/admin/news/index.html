@@ -1,3 +1,4 @@
+<script src="/js/tmpl.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +14,7 @@
   <title>DFC Danish Farming Consultants</title>
 
   <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/lib/animate.less/animate.min.css" rel="stylesheet">
   <link href="/css/admin.css" rel="stylesheet">
 
   <!--[if lt IE 9]>
@@ -23,68 +25,17 @@
 </head>
 <body>
 
-<div id="create-news-container" class="container">
-  <div class="row with-top-padding">
-    <div class="col-md-9">
-      <div class="row">
-        <div class="col-xs-1">Tytuł</div>
-        <div class="col-xs-11"><input class="title full-width" type="text"></div>
-      </div>
-      <div class="row">
-        <div class="col-xs-1">Data</div>
-        <div class="col-xs-1"><input id="createDatepicker" class="datepicker createdDate" type="text"></div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <textarea class="body full-width" rows="8"></textarea>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="row with-padding">
-        <input id="btn-news-create" type="button" class="btn btn-primary center-block" value="Dodaj">
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="news-placeholder"></div>
-
-<script id="newsTemplate" type="text/html">
-  <div class="container">
-    <div id="news-<%=id%>" class="row with-top-padding">
-      <div class="col-md-9">
-        <div class="row">
-          <div class="col-xs-1">Tytuł</div>
-          <div class="col-xs-11"><input class="title full-width" type="text" value="<%=title%>"></div>
-        </div>
-        <div class="row">
-          <div class="col-xs-1">Data</div>
-          <div class="col-xs-3"><input class="datepicker createdDate" type="text" value="<%=createdDate%>"></div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <textarea class="body full-width" rows="8"><%=body%></textarea>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="row with-padding">
-          <input type="button" class="btn btn-primary center-block btn-news-save" data-id="<%=id%>" value="Zapisz">
-        </div>
-        <div class="row with-padding">
-          <input type="button" class="btn btn-primary center-block btn-news-delete" data-id="<%=id%>" value="Usuń">
-        </div>
-      </div>
-    </div>
-  </div>
-</script>
+<div id="news"></div>
 
 <script src="/lib/jquery/dist/jquery.min.js"></script>
 <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <script src="/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pl.min.js"></script>
-<script src="/js/tmpl.js"></script>
+<script src="/lib/react/react.min.js"></script>
+<script src="/lib/lodash/lodash.min.js"></script>
+<script src="/lib/marked/lib/marked.js"></script>
+<script src="/lib/immutable/dist/immutable.min.js"></script>
+<script src="/lib/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js"></script>
 <script src="/js/api.js"></script>
 <script src="/js/news.js"></script>
 
