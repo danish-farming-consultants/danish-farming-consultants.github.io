@@ -57,7 +57,7 @@ a:active {
   background: url(/img/firma.jpg) no-repeat center center scroll;
 }
 
-.stock-section .img-row {
+.offer-section .img-row {
   background: url(/img/oferta.jpg) no-repeat center center scroll;
 }
 
@@ -67,6 +67,10 @@ a:active {
 
 .news-section .img-row {
   background: url(/img/aktualnosci.jpg) no-repeat center center scroll;
+}
+
+.delivery-section .img-row {
+  background: url(/img/dostawa.jpg) no-repeat center center scroll;
 }
 
 .btn {
@@ -124,8 +128,12 @@ a.btn-green {
   padding: 30px;
 }
 
-.news-row-container {
+.row-container {
   padding: 30px 30px 0 30px;
+}
+
+.row-container.single-row {
+  padding-bottom: 30px;
 }
 
 .column-margin {
@@ -214,8 +222,12 @@ a.btn-green {
     table-layout: fixed;
   }
 
-  .news-row-container {
+  .row-container {
     padding: 80px 80px 50px 80px;
+  }
+
+  .row-container.single-row {
+    padding-bottom: 80px;
   }
 
   .col-eq-height [class*="col-"] {
@@ -251,7 +263,7 @@ a.btn-green {
     padding-right: 200px;
   }
 
-  .news-row-container {
+  .row-container {
     padding-left: 200px;
     padding-right: 200px;
   }

@@ -101,7 +101,7 @@ $(function () {
       return '<div id="news-row-' + index + '" class="news-row row text-justify" ' + visible + '>' + chunkHtml + '</div>';
     });
     var html = chunksHtmls.join('');
-    var container = '<div class="news-row-container">' + html + '</div>';
+    var container = '<div class="row-container">' + html + '</div>';
     $('#news-container').replaceWith(container);
   });
 
