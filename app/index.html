@@ -51,13 +51,13 @@
           <a class="page-scroll" href="#intro">firma</a>
         </li>
         <li>
+          <a class="page-scroll" href="#news">aktualności</a>
+        </li>
+        <li>
           <a class="page-scroll" href="#stock">oferta</a>
         </li>
         <li>
           <a class="page-scroll" href="#contact">kontakt</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#news">aktualności</a>
         </li>
       </ul>
       <ul class="nav navbar-right navbar-right-info hidden-xs hidden-sm">
@@ -98,6 +98,30 @@
     </div>
   </div>
 </section>
+
+<section id="news" class="news-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 img-row">
+        <h3 class="img-info">aktualności</h3>
+      </div>
+    </div>
+    <div id="news-container"></div>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div id="see-more" class="btn btn-green btn-xl btn-margin-bottom">zobacz więcej</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script id="newsTemplate" type="text/html">
+  <div id="news-<%=escapeHtml(id)%>" class="news-element col-md-12 with-border">
+    <p><strong><%=escapeHtml(createdDate)%></strong></p>
+    <p><strong><%=escapeHtml(title)%></strong></p>
+    <p><%=marked(body, {sanitize: true})%></p>
+  </div>
+</script>
 
 <section id="stock" class="stock-section">
   <div class="container-fluid">
@@ -210,30 +234,6 @@
     </div>
   </div>
 </section>
-
-<section id="news" class="news-section">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-12 img-row">
-        <h3 class="img-info">aktualności</h3>
-      </div>
-    </div>
-    <div id="news-container"></div>
-    <div class="row">
-      <div class="col-md-4 col-md-offset-4">
-        <div id="see-more" class="btn btn-green btn-xl btn-margin-bottom">zobacz więcej</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script id="newsTemplate" type="text/html">
-  <div id="news-<%=escapeHtml(id)%>" class="news-element col-md-12 with-border">
-    <p><strong><%=escapeHtml(createdDate)%></strong></p>
-    <p><strong><%=escapeHtml(title)%></strong></p>
-    <p><%=marked(body, {sanitize: true})%></p>
-  </div>
-</script>
 
 <footer class="footer">
   <div class="container-fluid">

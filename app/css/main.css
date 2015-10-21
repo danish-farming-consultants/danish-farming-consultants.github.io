@@ -106,16 +106,18 @@ a.btn-green {
   color: #fff;
 }
 
-.btn-green:hover,
-.btn-green:focus,
-.btn-green.active {
+.btn.btn-green:hover,
+.btn.btn-green:focus,
+.btn.btn-green.active {
   background-color: #037550;
+  color: white;
 }
 
-.btn-green.btn-label:hover,
-.btn-green.btn-label:focus,
-.btn-green.btn-label.active {
+.btn.btn-green.btn-label:hover,
+.btn.btn-green.btn-label:focus,
+.btn.btn-green.btn-label.active {
   background-color: #00855a;
+  color: white;
 }
 
 .col-eq-height.row {
