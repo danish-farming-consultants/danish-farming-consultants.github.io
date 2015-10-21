@@ -92,21 +92,14 @@ $(function () {
     });
     var chunks = splitToThreeElementsChunks(newsHtmlTemplates);
     var chunksHtmls = $.map(chunks, function (chunk, index) {
-      var emptyNews = '<div class="col-md-4 with-border" style="visibility: hidden"></div>';
-      if (chunk.length == 1) {
-        chunk.push(emptyNews);
-        chunk.push(emptyNews);
-      }
-      if (chunk.length == 2) {
-        chunk.push(emptyNews);
-      }
-      var chunkHtml = chunk.join('<div class="column-margin"></div>');
+      var chunkHtml = chunk.join('');
       var visible = '';
       if (index > 0) visible = 'style="display: none; padding-top: 0;"';
-      return '<div id="news-row-' + index + '" class="news-row col-eq-height row text-justify" ' + visible + '>' + chunkHtml + '</div>';
+      return '<div id="news-row-' + index + '" class="news-row row text-justify" ' + visible + '>' + chunkHtml + '</div>';
     });
     var html = chunksHtmls.join('');
-    $('#news-container').replaceWith(html);
+    var container = '<div class="news-row-container">' + html + '</div>';
+    $('#news-container').replaceWith(container);
   });
 
   $.getJSON(api.getOffersInfos, function (offersInfos) {

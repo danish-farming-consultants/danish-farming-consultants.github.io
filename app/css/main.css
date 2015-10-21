@@ -54,19 +54,19 @@ a:active {
 }
 
 .intro-section .img-row {
-  background: url(../img/firma.jpg) no-repeat center center scroll;
+  background: url(/img/firma.jpg) no-repeat center center scroll;
 }
 
 .stock-section .img-row {
-  background: url(../img/oferta.jpg) no-repeat center center scroll;
+  background: url(/img/oferta.jpg) no-repeat center center scroll;
 }
 
 .contact-section .img-row {
-  background: url(../img/kontakt.jpg) no-repeat center center scroll;
+  background: url(/img/kontakt.jpg) no-repeat center center scroll;
 }
 
 .news-section .img-row {
-  background: url(../img/aktualnosci.jpg) no-repeat center center scroll;
+  background: url(/img/aktualnosci.jpg) no-repeat center center scroll;
 }
 
 .btn {
@@ -122,6 +122,10 @@ a.btn-green {
   padding: 30px;
 }
 
+.news-row-container {
+  padding: 30px 30px 0 30px;
+}
+
 .column-margin {
   height: 40px;
   width: 40px;
@@ -129,6 +133,11 @@ a.btn-green {
 
 .col-eq-height [class*="col-"] {
   padding: 10px;
+}
+
+.news-row .news-element {
+  padding: 10px;
+  margin-bottom: 30px;
 }
 
 .footer {
@@ -203,6 +212,10 @@ a.btn-green {
     table-layout: fixed;
   }
 
+  .news-row-container {
+    padding: 80px 80px 50px 80px;
+  }
+
   .col-eq-height [class*="col-"] {
     float: none;
     display: table-cell;
@@ -232,6 +245,11 @@ a.btn-green {
 
 @media (min-width: 1200px) {
   .col-eq-height.row {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+
+  .news-row-container {
     padding-left: 200px;
     padding-right: 200px;
   }
