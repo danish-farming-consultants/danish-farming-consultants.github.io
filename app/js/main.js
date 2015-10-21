@@ -80,6 +80,9 @@ $(function () {
   });
 
   $.getJSON(api.getNews, function (news) {
+    if (news.length <= 3) {
+      $('#see-more').hide();
+    }
     function splitToThreeElementsChunks(array) {
       var chunks = [];
       for (var i = 0, j = array.length; i < j; i += 3) {
