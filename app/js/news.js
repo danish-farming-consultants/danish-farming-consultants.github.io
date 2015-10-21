@@ -1,17 +1,18 @@
 const NewsAdminContainer = React.createClass({
-  onNewNewsEdit(id, createdDate, title, body) {
+  onNewNewsEdit(id, createdDate, title, body, language) {
     this.setState({
       newNews: {
         createdDate: createdDate,
         title: title,
-        body: body
+        body: body,
+        language: language
       }
     });
   },
-  onNewsEdit(id, createdDate, title, body) {
+  onNewsEdit(id, createdDate, title, body, language) {
     const newNews = _.map(this.state.news, news => {
       if (news.id === id) {
-        return { id: id, createdDate: createdDate, title: title, body: body };
+        return { id: id, createdDate: createdDate, title: title, body: body, language: language };
       } else {
         return news;
       }
@@ -22,7 +23,8 @@ const NewsAdminContainer = React.createClass({
     return {
       createdDate: new Date().toISOString().slice(0, 10),
       title: '',
-      body: ''
+      body: '',
+      language: 'pl'
     }
   },
   onDelete(id) {
@@ -34,7 +36,7 @@ const NewsAdminContainer = React.createClass({
   },
   onCreate() {
     const newNews = this.state.newNews;
-    this.props.onCreate(newNews.createdDate, newNews.title, newNews.body).done(saved => {
+    this.props.onCreate(newNews.createdDate, newNews.title, newNews.language, newNews.body).done(saved => {
       this.setState({
         newNews: this.emptyNews(),
         news: [saved].concat(this.state.news)
@@ -115,7 +117,8 @@ const NewsEditor = React.createClass({
       this.props.news.id,
       React.findDOMNode(this.refs.createdDate).value,
       React.findDOMNode(this.refs.title).value,
-      React.findDOMNode(this.refs.body).value
+      React.findDOMNode(this.refs.body).value,
+      React.findDOMNode(this.refs.language).value
     );
   },
   componentDidMount() {
@@ -134,6 +137,15 @@ const NewsEditor = React.createClass({
           <div className='col-xs-1'>Data</div>
           <div className='col-xs-11'>
             <input type='text' value={this.props.news.createdDate} ref='createdDate' onChange={this.handleEdit} />
+          </div>
+        </div>
+        <div className='row'>
+          <div className='col-xs-1'>Język</div>
+          <div className='col-xs-11'>
+            <select class='form-control' value={this.props.news.language} ref='language' onChange={this.handleEdit}>
+              <option value='pl'>pl</option>
+              <option value='eng'>eng</option>
+            </select>
           </div>
         </div>
         <div className='row'>
@@ -167,7 +179,7 @@ const NewsEditControls = React.createClass({
       <div>
         <div className='col-md-1'>
           <div className='row with-padding'>
-            <input type='button' className='btn btn-primary center-block' value='Zapisz' onClick={() => this.props.onSave(news.id, news.createdDate, news.title, news.body)} />
+            <input type='button' className='btn btn-primary center-block' value='Zapisz' onClick={() => this.props.onSave(news.id, news.createdDate, news.title, news.language, news.body)} />
           </div>
           <div className='row with-padding'>
             <input type='button' className='btn btn-primary center-block' value='Usuń' onClick={() => this.props.onDelete(news.id)} />
@@ -186,11 +198,11 @@ const news = (function () {
     $.notify(msg, {type: 'danger', delay: 3000, placement: {from: 'bottom', align: 'center'}});
   }
 
-  function create(createdDate, title, body) {
+  function create(createdDate, title, language, body) {
     return $.ajax({
       type: 'POST',
       url: api.postNews,
-      data: JSON.stringify({createdDate: createdDate, title: title, body: body}),
+      data: JSON.stringify({createdDate: createdDate, title: title, language: language, body: body}),
       contentType : 'application/json',
       success: () => success('Artykuł został dodany!'),
       error: () => error('Bład podczas dodawania!')
@@ -208,11 +220,11 @@ const news = (function () {
     });
   }
 
-  function save(id, createdDate, title, body) {
+  function save(id, createdDate, title, language, body) {
     return $.ajax({
       type: 'PUT',
       url: api.putNews,
-      data: JSON.stringify({id:id, createdDate: createdDate, title: title, body: body}),
+      data: JSON.stringify({id: id, createdDate: createdDate, title: title, language: language, body: body}),
       contentType : 'application/json',
       success: () => success('Artykuł został zapisany!'),
       error: () => error('Bład podczas zapisywania!')

@@ -29,10 +29,11 @@ $json = getJsonFromBody();
 $id = $db->escapeString(@$json['id']);
 $createdDate = $db->escapeString(@$json['createdDate']);
 $title = $db->escapeString(@$json['title']);
+$language = $db->escapeString(@$json['language']);
 $body = $db->escapeString(@$json['body']);
 
 if (is_numeric($id) && $createdDate != "" && $title != "" && $body != "") {
-    $db->exec("update news set createdDate = '$createdDate', title = '$title', body = '$body' where id = $id");
+    $db->exec("update news set createdDate = '$createdDate', title = '$title', language = '$language', body = '$body' where id = $id");
     echo json_encode($json);
 } else {
     header("HTTP/1.0 422 Unprocessable Entity");

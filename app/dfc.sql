@@ -12,6 +12,9 @@ insert into news (createdDate, title, body) values ('2015-10-05T20:39:24Z', 'tit
 insert into news (createdDate, title, body) values ('2015-12-05', 'title3', 'body3');
 insert into news (title, body) values ('title4', 'body3');
 
+alter table news
+add language text not null default('pl')
+
 drop table if exists offers;
 
 create table offers (

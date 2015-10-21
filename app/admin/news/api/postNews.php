@@ -28,13 +28,14 @@ $json = getJsonFromBody();
 
 $createdDate = $db->escapeString(@$json['createdDate']);
 $title = $db->escapeString(@$json['title']);
+$language = $db->escapeString(@$json['language']);
 $body = $db->escapeString(@$json['body']);
 
-if ($title != "" && $body != "") {
+if ($title != "" && $language != "" && $body != "") {
     if ($createdDate != "") {
-        $db->exec("insert into news (createdDate, title, body) values ('$createdDate', '$title', '$body')");
+        $db->exec("insert into news (createdDate, title, language, body) values ('$createdDate', '$title', '$language', '$body')");
     } else {
-        $db->exec("insert into news (title, body) values ('$title', '$body')");
+        $db->exec("insert into news (title, language, body) values ('$title', '$language', '$body')");
     }
     $id = $db->lastInsertRowid();
     $news = $db->query("select * from news where id = $id")->fetchArray(SQLITE3_ASSOC);
