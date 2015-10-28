@@ -144,7 +144,7 @@ const NewsEditor = React.createClass({
           <div className='col-xs-11'>
             <select class='form-control' value={this.props.news.language} ref='language' onChange={this.handleEdit}>
               <option value='pl'>pl</option>
-              <option value='eng'>eng</option>
+              <option value='en'>en</option>
             </select>
           </div>
         </div>

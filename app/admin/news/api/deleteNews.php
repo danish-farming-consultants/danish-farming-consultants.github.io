@@ -1,13 +1,13 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] !== 'DELETE') {
-    header("HTTP/1.0 404 Not Found");
+    header('HTTP/1.0 404 Not Found');
     die();
 }
 
 header('Content-Type: application/json; charset=UTF-8');
 
 if (!($db = new SQLite3('../../../dfc.sqlite3', SQLITE3_OPEN_READWRITE))) {
-    echo "<h2>" . $TEXT['dfc.sqlite3'] . "</h2>";
+    echo '<h2>' . $TEXT['dfc.sqlite3'] . '</h2>';
     die();
 }
 
@@ -18,7 +18,7 @@ function isJson($string){
 function getJsonFromBody() {
     $body = file_get_contents('php://input');
     if (!isJson($body)) {
-        header("HTTP/1.0 400 Bad Request");
+        header('HTTP/1.0 400 Bad Request');
         die();
     }
     return json_decode($body, true);
@@ -28,10 +28,12 @@ $json = getJsonFromBody();
 
 $id = $db->escapeString(@$json['id']);
 if (is_numeric($id)) {
-    $db->exec("delete from news where id = $id");
+    $query = $db->prepare('delete from news where id = :id');
+    $query->bindValue(':id', $id);
+    $query->execute();
     echo json_encode($json);
 } else {
-    header("HTTP/1.0 422 Unprocessable Entity");
+    header('HTTP/1.0 422 Unprocessable Entity');
     die();
 }
 

@@ -79,7 +79,7 @@ $(function () {
     $('#offers-placeholder').replaceWith(offersHtml);
   });
 
-  $.getJSON(api.getNews, function (news) {
+  $.getJSON(api.getNews + '?lang=' + language, function (news) {
     if (news.length <= 3) {
       $('#see-more').hide();
     }
