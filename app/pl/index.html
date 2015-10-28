@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="DFC Danish Farming Consultants - chów i hodowla trzody - uprawa zbóż - produkcja pasz - PRODUKCJA ROLNA - TRZODA CHLEWNA - Gliwice">
+  <meta name="author" content="Michał Kowol, Aleksandra Paruzel">
+
+  <title>DFC Danish Farming Consultants</title>
+
+  <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/lib/animate.less/animate.min.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet">
+
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+
+<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand page-scroll" href="#page-top"><img src="/img/dfc-logo.jpg" alt="dfc"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+        <li class="hidden">
+          <a class="page-scroll" href="#page-top"></a>
+        </li>
+        <li>
+          <a class="page-scroll" href="#intro">firma</a>
+        </li>
+        <li>
+          <a class="page-scroll" href="#news">aktualności</a>
+        </li>
+        <li>
+          <a class="page-scroll" href="#offer">oferta</a>
+        </li>
+        <li>
+          <a class="page-scroll" href="#delivery">warunki dostawy</a>
+        </li>
+        <li>
+          <a class="page-scroll" href="#contact">kontakt</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-right navbar-right-info hidden-xs hidden-sm">
+        <li>
+          <a href="https://www.rzetelnafirma.pl/7JT0UKO5/1" target="_blank" class="navbar-right-info-link"><img src="/img/rf.jpg" alt="Rzetelna Firma"></a>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+
+<section id="intro" class="intro-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 img-row">
+        <h3 class="img-info">firma</h3>
+      </div>
+    </div>
+    <div class="col-eq-height row text-justify">
+      <div class="col-md-4 with-border">
+        Danish Farming Consultants Sp&nbsp;z&nbsp;o.o. w&nbsp;Rzeczycach istnieje od 1 lipca 1995 roku i&nbsp;powstała na bazie części dawnego kombinatu PGR Gliwice. Jest to firma
+        ze stuprocentowym duńskim kapitałem z&nbsp;nieruchomościami dzierżawionymi od Agencji Nieruchomości Rolnych.
+      </div>
+      <div class="column-margin"></div>
+      <div class="col-md-4 with-border">
+        Jesteśmy jednym z&nbsp;największych hodowców trzody chlewnej w Polsce. Rocznie w cyklu zamkniętym produkujemy do 60 000 stukilogramowych tuczników.
+        Charakteryzują się one dużą zawartością mięsa w tuszy, dlatego też cieszą się uznaniem wśród renomowanych firm przetwórstwa mięsnego z&nbsp;regionu i&nbsp;nie
+        tylko.
+      </div>
+      <div class="column-margin"></div>
+      <div class="col-md-4 with-border">
+        Oprócz produkcji zwierzęcej zajmujemy się produkcją rolną. Na 1250 ha uprawiamy jęczmień, pszenicę, kukurydzę, rzepak oraz żyto. Większa część produkcji
+        roślinnej wykorzystywana jest do produkcji pasz dla naszej trzody chlewnej. Corocznie sprzedajemy rzepak oraz żyto. Na chwilę obecną DFC zatrudnia 60
+        pracowników.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="news" class="news-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 img-row">
+        <h3 class="img-info">aktualności</h3>
+      </div>
+    </div>
+    <div id="news-container"></div>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div id="see-more" class="btn btn-green btn-xl btn-margin-bottom">zobacz więcej</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script id="newsTemplate" type="text/html">
+  <div id="news-<%=escapeHtml(id)%>" class="news-element col-md-12 with-border">
+    <p><strong><%=escapeHtml(createdDate)%></strong></p>
+    <p><strong><%=escapeHtml(title)%></strong></p>
+    <p><%=marked(body, {sanitize: true})%></p>
+  </div>
+</script>
+
+<section id="offer" class="offer-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 img-row">
+        <h3 class="img-info">oferta</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div id="offer-info" class="btn btn-green btn-label btn-xl btn-margin-top page-scroll wow pulse" data-wow-delay=".5s"></div>
+      </div>
+    </div>
+    <div class="col-eq-height col-eq-height-4 row">
+      <div id="offers-placeholder"></div>
+    </div>
+  </div>
+</section>
+
+<script id="offerTemplate" type="text/html">
+  <div id="offer-<%=escapeHtml(id)%>" class="col-md-3 with-border">
+    <strong><%=escapeHtml(name)%></strong> liczba sztuk <strong><%=escapeHtml(amount)%></strong> w średniej wadze od <%=escapeHtml(weightMin)%> do <%=escapeHtml(weightMax)%>. Cena za 1 kg (wagi żywej):  <strong><%=escapeHtml(price)%></strong> zł.
+  </div>
+</script>
+
+<section id="delivery" class="delivery-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 img-row">
+        <h3 class="img-info">warunki dostawy</h3>
+      </div>
+    </div>
+    <div class="row row-container single-row">
+      <div class="col-md-12 with-border text-justify">
+        <h3 class="text-center">Warunki dostawy</h3>
+        <p>W związku z zagrożeniem epidemiologicznym stada trzody chlewnej, na całym terenie zakładu obwiązują zasady bioasekuracji, wszyscy dostawcy zobowiązania są do ich przestrzegania:</p>
+        <ol>
+          <li>Każdy środek transportu wjeżdżając na teren fermy musi przejeżdżać przez matę dezynfekcyjną zalaną środkiem odkażającym oraz dodatkowo mieć zdezynfekowane koła i podwozie przez portiera za pomocą opryskiwacza ręcznego.</li>
+          <li>Kierowca wjeżdżającego auta (ciągnika) musi założyć jednorazowy kombinezon oraz zmienić obuwie. Jeżeli nie ma absolutnej konieczność do środka powinna wjeżdżać tylko jedna osoba - kierowca środka transportu. Osoba ta powinna ograniczyć strefę poruszania się po fermie do niezbędnego minimum.</li>
+          <li>Wszelkie niezaplanowane wjazdy mogą się obyć dopiero po zgłoszeniu w biurze i uzyskaniu zgody Dyrektora/Kierownika.</li>
+          <li>Przedstawiciele (kierowcy) odbierający trzodę dokumenty przewozowe otrzymują na portierni po przejściu przez matę dezynfekującą.</li>
+          <li>Niezbędny czas bez kontaktu z innymi świniami/dzikami przed wejściem gościa na fermę wynosi 72h.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="container-fluid">
+    <div class="row">
+      <a href="https://goo.gl/maps/iZjT8" target="_blank">
+        <div class="col-lg-12 img-row">
+          <h3 class="img-info">kontakt</h3>
+        </div>
+      </a>
+    </div>
+    <div class="col-eq-height row text-middle">
+      <div class="col-md-4 with-border">
+        <p>
+          <strong>Danish Farming Consultants Sp z o.o.</strong><br/>
+          Rzeczyce, ul. Piaskowa 16,<br/>
+          44-164 Gliwice
+        </p>
+
+        <p>
+          <strong>TEL:</strong> 032/ 270 15 79,<br/>
+          <strong>FAKS:</strong> 032/ 270 15 97<br/>
+          <strong>E-MAIL:</strong> <a href="mailto:biuro@dfc.slask.pl" target="_blank">biuro@dfc.slask.pl</a>
+        </p>
+
+        <p>
+          <strong>NIP</strong> 631-10-21-786,<br/>
+          <strong>VATUE</strong> PL6311021786,<br/>
+          <strong>REGON</strong> 272617540, <strong>KRS</strong> 000010844
+        </p>
+
+        <p>
+          Sąd Rejonowy w Gliwicach,<br/>
+          X Wydział Gospodarczy Krajowego Rejestru Sądowego<br/>
+          kapitał zakładowy 3.483.000 PLN<br/>
+        </p>
+      </div>
+      <div class="column-margin"></div>
+      <div class="col-md-4 with-border">
+        <p>
+          <strong>Dyrektor Generalny-Członek Zarządu</strong><br/>
+          Per Lykke Jensen
+        </p>
+
+        <p>
+          <strong>V-ce Dyrektor Generalny-Członek Zarządu</strong><br/>
+          Anna Kwiecińska
+        </p>
+
+        <p>
+          <strong>Kierownik ds. produkcji zwierzęcej</strong><br/>
+          Steen Low
+        </p>
+
+        <p>
+          <strong>Kierownik ds. produkcji roślinnej</strong><br/>
+          John Rasmussen
+        </p>
+      </div>
+      <div class="column-margin"></div>
+      <div class="col-md-4 with-border">
+        <p>
+          <strong>Administracja</strong><br/>
+          <a href="mailto:biuro@dfc.slask.pl" target="_blank">biuro@dfc.slask.pl</a><br/>
+        </p>
+
+        <p>
+          <strong>Dział sprzedaży</strong><br/>
+          <a href="mailto:az@dfc.slask.pl" target="_blank">az@dfc.slask.pl</a>
+        </p>
+
+        <p>
+          <strong>Księgowość</strong><br/>
+          <a href="mailto:ks@dfc.slask.pl" target="_blank">ks@dfc.slask.pl</a>
+        </p>
+
+        <p>
+          <strong>Kadry</strong><br/>
+          <a href="mailto:hr@dfc.slask.pl" target="_blank">hr@dfc.slask.pl</a>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <a href="https://goo.gl/maps/iZjT8" target="_blank" class="btn btn-green btn-xl btn-margin-bottom">zobacz dokładny dojazd</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="pull-left"><strong>Danish Farming Consultants Sp z o.o.</strong>, Rzeczyce, ul. Piaskowa 16</div>
+      <div class="pull-right"><a href="roundcube" target="_blank">logowanie</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  language = 'pl';
+</script>
+
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/lib/jquery.easing/js/jquery.easing.min.js"></script>
+<script src="/lib/jquery.transit/jquery.transit.js"></script>
+<script src="/lib/wow/dist/wow.min.js"></script>
+<script src="/lib/marked/lib/marked.js"></script>
+<script src="/js/tmpl.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/main.js"></script>
+
+</body>
+</html>
