@@ -51,24 +51,28 @@
           <a class="page-scroll" href="#page-top"></a>
         </li>
         <li>
-          <a class="page-scroll" href="#intro">firma</a>
+          <a class="page-scroll" href="#intro">company</a>
         </li>
         <li>
-          <a class="page-scroll" href="#news">aktualności</a>
+          <a class="page-scroll" href="#news">news</a>
         </li>
         <li>
-          <a class="page-scroll" href="#offer">oferta</a>
+          <a class="page-scroll" href="#offer">offer</a>
         </li>
         <li>
-          <a class="page-scroll" href="#delivery">warunki dostawy</a>
+          <a class="page-scroll" href="#delivery">delivery terms</a>
         </li>
         <li>
-          <a class="page-scroll" href="#contact">kontakt</a>
+          <a class="page-scroll" href="#contact">contact</a>
         </li>
       </ul>
       <ul class="nav navbar-right navbar-right-info hidden-xs hidden-sm">
-        <li>
-          <a href="https://www.rzetelnafirma.pl/7JT0UKO5/1" target="_blank" class="navbar-right-info-link"><img src="/img/rf.jpg" alt="Rzetelna Firma"></a>
+        <li class="clearfix">
+          <div class="pull-left rt"><a href="https://www.rzetelnafirma.pl/7JT0UKO5/1" target="_blank" class="navbar-right-info-link"><img src="/img/rf.jpg" alt="Rzetelna Firma"></a></div>
+          <div class="pull-left lang-container">
+            <div><a href="/pl">PL</a></div>
+            <div><a href="/en">EN</a></div>
+          </div>
         </li>
       </ul>
     </div>
@@ -81,7 +85,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12 img-row">
-        <h3 class="img-info">firma</h3>
+        <h3 class="img-info">company</h3>
       </div>
     </div>
     <div class="col-eq-height row text-justify">
@@ -104,7 +108,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12 img-row">
-        <h3 class="img-info">aktualności</h3>
+        <h3 class="img-info">news</h3>
       </div>
     </div>
     <div id="news-container"></div>
@@ -128,7 +132,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12 img-row">
-        <h3 class="img-info">oferta</h3>
+        <h3 class="img-info">offer</h3>
       </div>
     </div>
     <div class="row">
@@ -144,7 +148,7 @@
 
 <script id="offerTemplate" type="text/html">
   <div id="offer-<%=escapeHtml(id)%>" class="col-md-3 with-border">
-    <strong><%=escapeHtml(name)%></strong> liczba sztuk <strong><%=escapeHtml(amount)%></strong> w średniej wadze od <%=escapeHtml(weightMin)%> do <%=escapeHtml(weightMax)%>. Cena za 1 kg (wagi żywej):  <strong><%=escapeHtml(price)%></strong> zł.
+    <strong><%=escapeHtml(nameEn)%> <%=escapeHtml(amount)%></strong> at an average weight of <%=escapeHtml(weightMin)%> to <%=escapeHtml(weightMax)%>. The price for 1 kg (liveweight):  <strong><%=escapeHtml(price)%></strong> PLN.
   </div>
 </script>
 
@@ -152,12 +156,12 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12 img-row">
-        <h3 class="img-info">warunki dostawy</h3>
+        <h3 class="img-info">delivery terms</h3>
       </div>
     </div>
     <div class="row row-container single-row">
       <div class="col-md-12 with-border text-justify">
-        <h3 class="text-center">Warunki dostawy</h3>
+        <h3 class="text-center">Delivery terms</h3>
         <p>In accordance with epidemiologic thread to swine herd, the principles of bio-assurance are obligatory at the whole farm area; all suppliers are obliged to preserve them.</p>
         <ol>
           <li>Every transportation mean while entering the farm area has to pass the disinfection mate poured with disinfection agent as well as additionally vehicle wheels and chassis must be disinfected by porter by means of manual sprayer.</li>
@@ -176,7 +180,7 @@
     <div class="row">
       <a href="https://goo.gl/maps/iZjT8" target="_blank">
         <div class="col-lg-12 img-row">
-          <h3 class="img-info">kontakt</h3>
+          <h3 class="img-info">contact</h3>
         </div>
       </a>
     </div>
@@ -190,7 +194,7 @@
 
         <p>
           <strong>TEL:</strong> 032/ 270 15 79,<br/>
-          <strong>FAKS:</strong> 032/ 270 15 97<br/>
+          <strong>FAX:</strong> 032/ 270 15 97<br/>
           <strong>E-MAIL:</strong> <a href="mailto:biuro@dfc.slask.pl" target="_blank">biuro@dfc.slask.pl</a>
         </p>
 
@@ -201,59 +205,59 @@
         </p>
 
         <p>
-          Sąd Rejonowy w Gliwicach,<br/>
-          X Wydział Gospodarczy Krajowego Rejestru Sądowego<br/>
-          kapitał zakładowy 3.483.000 PLN<br/>
+          The District Court in Gliwice,<br/>
+          X Commercial Department of National Court Register<br/>
+          capital of 3 483 000 PLN<br/>
         </p>
       </div>
       <div class="column-margin"></div>
       <div class="col-md-4 with-border">
         <p>
-          <strong>Dyrektor Generalny-Członek Zarządu</strong><br/>
+          <strong>Chief Executive Officer-Member of the Board</strong><br/>
           Per Lykke Jensen
         </p>
 
         <p>
-          <strong>V-ce Dyrektor Generalny-Członek Zarządu</strong><br/>
+          <strong>Vice Chief Executive Officer-Member of the Board</strong><br/>
           Anna Kwiecińska
         </p>
 
         <p>
-          <strong>Kierownik ds. produkcji zwierzęcej</strong><br/>
+          <strong>Manager of animal production</strong><br/>
           Steen Low
         </p>
 
         <p>
-          <strong>Kierownik ds. produkcji roślinnej</strong><br/>
+          <strong>Manager of crop production</strong><br/>
           John Rasmussen
         </p>
       </div>
       <div class="column-margin"></div>
       <div class="col-md-4 with-border">
         <p>
-          <strong>Administracja</strong><br/>
+          <strong>Office</strong><br/>
           <a href="mailto:biuro@dfc.slask.pl" target="_blank">biuro@dfc.slask.pl</a><br/>
         </p>
 
         <p>
-          <strong>Dział sprzedaży</strong><br/>
+          <strong>Sales department</strong><br/>
           <a href="mailto:az@dfc.slask.pl" target="_blank">az@dfc.slask.pl</a>
         </p>
 
         <p>
-          <strong>Księgowość</strong><br/>
+          <strong>Accounting department</strong><br/>
           <a href="mailto:ks@dfc.slask.pl" target="_blank">ks@dfc.slask.pl</a>
         </p>
 
         <p>
-          <strong>Kadry</strong><br/>
+          <strong>Human resources</strong><br/>
           <a href="mailto:hr@dfc.slask.pl" target="_blank">hr@dfc.slask.pl</a>
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
-        <a href="https://goo.gl/maps/iZjT8" target="_blank" class="btn btn-green btn-xl btn-margin-bottom">zobacz dokładny dojazd</a>
+        <a href="https://goo.gl/maps/iZjT8" target="_blank" class="btn btn-green btn-xl btn-margin-bottom">get directions</a>
       </div>
     </div>
   </div>
@@ -263,7 +267,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="pull-left"><strong>Danish Farming Consultants Sp z o.o.</strong>, Rzeczyce, ul. Piaskowa 16</div>
-      <div class="pull-right"><a href="roundcube" target="_blank">logowanie</a></div>
+      <div class="pull-right"><a href="roundcube" target="_blank">sign in</a></div>
     </div>
   </div>
 </footer>

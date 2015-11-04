@@ -67,8 +67,12 @@
         </li>
       </ul>
       <ul class="nav navbar-right navbar-right-info hidden-xs hidden-sm">
-        <li>
-          <a href="https://www.rzetelnafirma.pl/7JT0UKO5/1" target="_blank" class="navbar-right-info-link"><img src="/img/rf.jpg" alt="Rzetelna Firma"></a>
+        <li class="clearfix">
+          <div class="pull-left rt"><a href="https://www.rzetelnafirma.pl/7JT0UKO5/1" target="_blank" class="navbar-right-info-link"><img src="/img/rf.jpg" alt="Rzetelna Firma"></a></div>
+          <div class="pull-left lang-container">
+            <div><a href="/pl">PL</a></div>
+            <div><a href="/en">EN</a></div>
+          </div>
         </li>
       </ul>
     </div>
@@ -149,7 +153,7 @@
 
 <script id="offerTemplate" type="text/html">
   <div id="offer-<%=escapeHtml(id)%>" class="col-md-3 with-border">
-    <strong><%=escapeHtml(name)%></strong> liczba sztuk <strong><%=escapeHtml(amount)%></strong> w średniej wadze od <%=escapeHtml(weightMin)%> do <%=escapeHtml(weightMax)%>. Cena za 1 kg (wagi żywej):  <strong><%=escapeHtml(price)%></strong> zł.
+    <strong><%=escapeHtml(namePl)%></strong> liczba sztuk <strong><%=escapeHtml(amount)%></strong> w średniej wadze od <%=escapeHtml(weightMin)%> do <%=escapeHtml(weightMax)%>. Cena za 1 kg (wagi żywej):  <strong><%=escapeHtml(price)%></strong> zł.
   </div>
 </script>
 
@@ -208,7 +212,7 @@
         <p>
           Sąd Rejonowy w Gliwicach,<br/>
           X Wydział Gospodarczy Krajowego Rejestru Sądowego<br/>
-          kapitał zakładowy 3.483.000 PLN<br/>
+          kapitał zakładowy 3 483 000 PLN<br/>
         </p>
       </div>
       <div class="column-margin"></div>

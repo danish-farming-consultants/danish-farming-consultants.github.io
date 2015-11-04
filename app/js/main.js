@@ -107,6 +107,12 @@ $(function () {
 
   $.getJSON(api.getOffersInfos, function (offersInfos) {
     var offerInfo = offersInfos[0];
-    $('#offer-info').text(offerInfo.title);
+    var title;
+    if (language === 'en') {
+      title = offerInfo.titleEn;
+    } else {
+      title = offerInfo.titlePl;
+    }
+    $('#offer-info').text(title);
   });
 });

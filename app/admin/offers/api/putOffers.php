@@ -28,15 +28,17 @@ function getJsonFromBody() {
 $json = getJsonFromBody();
 
 $id = $db->escapeString(@$json['id']);
-$name = $db->escapeString(@$json['name']);
+$namePl = $db->escapeString(@$json['namePl']);
+$nameEn = $db->escapeString(@$json['nameEn']);
 $amount = $db->escapeString(@$json['amount']);
 $weightMin = $db->escapeString(@$json['weightMin']);
 $weightMax = $db->escapeString(@$json['weightMax']);
 $price = $db->escapeString(@$json['price']);
 
-if (is_numeric($id) && $name != '' && is_numeric($amount) && is_numeric($weightMin) && is_numeric($weightMax) && is_numeric($price)) {
-    $query = $db->prepare('update offers set name = :name, amount = :amount, weightMin = :weightMin, weightMax = :weightMax, price = :price where id = :id');
-    $query->bindValue(':name', $name);
+if (is_numeric($id) && $namePl != '' && $nameEn != '' && is_numeric($amount) && is_numeric($weightMin) && is_numeric($weightMax) && is_numeric($price)) {
+    $query = $db->prepare('update offers set namePl = :namePl, nameEn = :nameEn, amount = :amount, weightMin = :weightMin, weightMax = :weightMax, price = :price where id = :id');
+    $query->bindValue(':namePl', $namePl);
+    $query->bindValue(':nameEn', $nameEn);
     $query->bindValue(':amount', $amount);
     $query->bindValue(':weightMin', $weightMin);
     $query->bindValue(':weightMax', $weightMax);

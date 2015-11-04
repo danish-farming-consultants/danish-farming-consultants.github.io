@@ -28,11 +28,13 @@ function getJsonFromBody() {
 $json = getJsonFromBody();
 
 $id = $db->escapeString(@$json['id']);
-$title = $db->escapeString(@$json['title']);
+$titlePl = $db->escapeString(@$json['titlePl']);
+$titleEn = $db->escapeString(@$json['titleEn']);
 
-if (is_numeric($id) && $title != '') {
-    $query = $db->prepare('update offersInfos set title = :title where id = :id');
-    $query->bindValue(':title', $title);
+if (is_numeric($id) && $titlePl != '' && $titleEn != '') {
+    $query = $db->prepare('update offersInfos set titlePl = :titlePl, titleEn = :titleEn where id = :id');
+    $query->bindValue(':titlePl', $titlePl);
+    $query->bindValue(':titleEn', $titleEn);
     $query->bindValue(':id', $id);
     $query->execute();
     echo json_encode($json);

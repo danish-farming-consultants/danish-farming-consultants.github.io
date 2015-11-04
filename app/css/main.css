@@ -33,7 +33,15 @@ a:active {
 }
 
 .navbar-right-info li {
-  margin-top: -27px;
+  margin-top: -17px;
+}
+
+.navbar-right-info .rt {
+  width: 180px;
+}
+
+.navbar-right-info .lang-container {
+  padding: 24px 10px 0 0;
 }
 
 .navbar-right-info-link img {

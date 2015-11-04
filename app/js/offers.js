@@ -21,7 +21,8 @@ $(function () {
         var container = $(this);
         var offer = {
           id: container.find('.id').val(),
-          name: container.find('.name').val(),
+          namePl: container.find('.namePl').val(),
+          nameEn: container.find('.nameEn').val(),
           amount: container.find('.amount').val(),
           weightMin: container.find('.weightMin').val(),
           weightMax: container.find('.weightMax').val(),
@@ -32,7 +33,7 @@ $(function () {
       var offerInfoPromise = $.ajax({
         type: 'PUT',
         url: api.putOffersInfos,
-        data: JSON.stringify({id: $('#offer-info-id').val(), title: $('#offer-info-title').val() }),
+        data: JSON.stringify({id: $('#offer-info-id').val(), titlePl: $('#offer-info-title-pl').val(), titleEn: $('#offer-info-title-en').val() }),
         contentType : 'application/json'
       });
       offersPromises.push(offerInfoPromise);
@@ -52,7 +53,8 @@ $(function () {
   $.getJSON(api.getOffersInfos, function (offersInfos) {
     var offerInfo = offersInfos[0];
     $('#offer-info-id').val(offerInfo.id);
-    $('#offer-info-title').val(offerInfo.title);
+    $('#offer-info-title-pl').val(offerInfo.titlePl);
+    $('#offer-info-title-en').val(offerInfo.titleEn);
   });
 
   initOffersSaveButton();
