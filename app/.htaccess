@@ -5,6 +5,6 @@
 RewriteEngine On
 
 RewriteCond %{HTTP:Accept-Language} ^pl [NC]
-RewriteRule ^$ /pl [L,R=301]
+RewriteRule ^$ /pl/ [L,R=301]
 
-RewriteRule ^$ /en [L,R=301]
+RewriteRule ^$ /en/ [L,R=301]
