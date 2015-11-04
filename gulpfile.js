@@ -8,7 +8,7 @@ var runSequence = require('run-sequence');
 
 var paths = {
   scripts: 'app/js/**/*.js',
-  assets: ['app/index.html', 'app/pl/index.html', 'app/en/index.html', 'app/api/**/*', 'app/admin/**/*', 'app/admin/**/.htaccess', 'app/favicon.ico', 'app/.htaccess', 'app/lib/**/*', 'app/css/**/*.css', 'app/fonts/**/*', 'app/img/**/*']
+  assets: ['app/index.html', 'app/pl/index.html', 'app/google8fadfbadd478bc37.html', 'app/en/index.html', 'app/api/**/*', 'app/admin/**/*', 'app/admin/**/.htaccess', 'app/favicon.ico', 'app/.htaccess', 'app/lib/**/*', 'app/css/**/*.css', 'app/fonts/**/*', 'app/img/**/*']
 };
 
 gulp.task('clean', function() {
