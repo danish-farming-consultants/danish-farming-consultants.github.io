@@ -30,11 +30,15 @@ $json = getJsonFromBody();
 $id = $db->escapeString(@$json['id']);
 $titlePl = $db->escapeString(@$json['titlePl']);
 $titleEn = $db->escapeString(@$json['titleEn']);
+$pricePl = $db->escapeString(@$json['pricePl']);
+$priceEn = $db->escapeString(@$json['priceEn']);
 
 if (is_numeric($id) && $titlePl != '' && $titleEn != '') {
-    $query = $db->prepare('update offersInfos set titlePl = :titlePl, titleEn = :titleEn where id = :id');
+    $query = $db->prepare('update offersInfos set titlePl = :titlePl, titleEn = :titleEn, pricePl = :pricePl, priceEn = :priceEn where id = :id');
     $query->bindValue(':titlePl', $titlePl);
     $query->bindValue(':titleEn', $titleEn);
+    $query->bindValue(':pricePl', $pricePl);
+    $query->bindValue(':priceEn', $priceEn);
     $query->bindValue(':id', $id);
     $query->execute();
     echo json_encode($json);

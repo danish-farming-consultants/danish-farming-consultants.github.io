@@ -140,15 +140,23 @@
         <div id="offer-info" class="btn btn-green btn-label btn-xl btn-margin-top page-scroll wow pulse" data-wow-delay=".5s"></div>
       </div>
     </div>
-    <div class="col-eq-height col-eq-height-4 row">
+    <div class="row col-eq-height col-eq-height-4">
       <div id="offers-placeholder"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div style="margin-bottom: 80px;">
+          <h4>Prices are negotiable.</h4>
+          <h5 id="price-info"></h5>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <script id="offerTemplate" type="text/html">
   <div id="offer-<%=escapeHtml(id)%>" class="col-md-3 with-border">
-    <strong><%=escapeHtml(nameEn)%> <%=escapeHtml(amount)%></strong> at an average weight of <%=escapeHtml(weightMin)%> to <%=escapeHtml(weightMax)%>. The price for 1 kg (liveweight):  <strong><%=escapeHtml(price)%></strong> PLN.
+    <strong><%=escapeHtml(nameEn)%> <%=escapeHtml(amount)%></strong> at an average weight of <%=escapeHtml(weightMin)%> to <%=escapeHtml(weightMax)%>.
   </div>
 </script>
 

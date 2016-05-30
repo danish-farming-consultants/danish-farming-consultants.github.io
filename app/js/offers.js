@@ -33,7 +33,13 @@ $(function () {
       var offerInfoPromise = $.ajax({
         type: 'PUT',
         url: api.putOffersInfos,
-        data: JSON.stringify({id: $('#offer-info-id').val(), titlePl: $('#offer-info-title-pl').val(), titleEn: $('#offer-info-title-en').val() }),
+        data: JSON.stringify({
+          id: $('#offer-info-id').val(),
+          titlePl: $('#offer-info-title-pl').val(),
+          titleEn: $('#offer-info-title-en').val(),
+          pricePl: $('#offer-info-price-pl').val(),
+          priceEn: $('#offer-info-price-en').val()
+        }),
         contentType : 'application/json'
       });
       offersPromises.push(offerInfoPromise);
@@ -55,6 +61,8 @@ $(function () {
     $('#offer-info-id').val(offerInfo.id);
     $('#offer-info-title-pl').val(offerInfo.titlePl);
     $('#offer-info-title-en').val(offerInfo.titleEn);
+    $('#offer-info-price-pl').val(offerInfo.pricePl);
+    $('#offer-info-price-en').val(offerInfo.priceEn);
   });
 
   initOffersSaveButton();

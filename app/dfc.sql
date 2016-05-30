@@ -59,3 +59,18 @@ insert into offersInfos(id, titlePl, titleEn)
   from offersInfos_tmp;
 drop table offersInfos_tmp;
 commit;
+
+begin transaction;
+alter table offersInfos rename to offersInfos_tmp;
+create table offersInfos (
+  id integer primary key autoincrement,
+  titlePl text not null,
+  titleEn text not null,
+  pricePl text not null,
+  priceEn text not null
+);
+insert into offersInfos(id, titlePl, titleEn, pricePl, priceEn)
+  select id, titlePl, titleEn, '', ''
+  from offersInfos_tmp;
+drop table offersInfos_tmp;
+commit;

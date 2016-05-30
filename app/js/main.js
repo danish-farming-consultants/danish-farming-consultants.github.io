@@ -108,11 +108,15 @@ $(function () {
   $.getJSON(api.getOffersInfos, function (offersInfos) {
     var offerInfo = offersInfos[0];
     var title;
+    var price;
     if (language === 'en') {
       title = offerInfo.titleEn;
+      price = offerInfo.priceEn;
     } else {
       title = offerInfo.titlePl;
+      price = offerInfo.pricePl;
     }
     $('#offer-info').text(title);
+    $('#price-info').text(price);
   });
 });
