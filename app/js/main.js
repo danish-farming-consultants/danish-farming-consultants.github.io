@@ -75,8 +75,9 @@ $(function () {
     var offersTemplates = $.map(offers, function (offer) {
       return tmpl('offerTemplate', offer);
     });
-    var offersHtml = offersTemplates.join('<div class="column-margin"></div>');
-    $('#offers-placeholder').replaceWith(offersHtml);
+    $.each(offersTemplates, function (index, offerTemplate) {
+      $('#offer-' + (index + 1)).html(offerTemplate);
+    });
   });
 
   $.getJSON(api.getNews + '?lang=' + language, function (news) {

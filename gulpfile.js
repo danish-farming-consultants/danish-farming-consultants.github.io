@@ -42,7 +42,8 @@ gulp.task('connect', function () {
     middleware: function () {
       function createProxy(path) {
         return proxy({
-          port: 8081,
+          hostname: 'www.dfc.slask.pl',
+          port: 80,
           pathname: path,
           route: path
         });

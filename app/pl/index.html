@@ -145,12 +145,40 @@
         <div id="offer-info" class="btn btn-green btn-label btn-xl btn-margin-top page-scroll wow pulse" data-wow-delay=".5s"></div>
       </div>
     </div>
-    <div class="row col-eq-height col-eq-height-4">
-      <div id="offers-placeholder"></div>
+    <div class="row sm-padding-top">
+      <div class="col-md-8 col-md-offset-2">
+        Oferujemy do sprzedaży trzodę chlewną pochodzącą z systemu hodowlanego wykorzystującej najnowsze osiągnięcia w dziedzinie genetyki.<br/>
+        Genetyka duńska – DANBRED – charakteryzuje się bardzo wysoką jakością mięsa. Roczna produkcja tuczników wynosi ok. 67.000 sztuk.
+      </div>
+    </div>
+    <div class="row" style="padding: 20px">
+      <div class="col-md-2 col-md-offset-4">
+        <img src="/img/sm.jpg" alt="średnia mięsność" class="img-responsive center-block"/>
+      </div>
+      <div class="col-md-2">
+        <img src="/img/sw.jpg" alt="średnia waga" class="img-responsive center-block"/>
+      </div>
+    </div>
+    <div class="row col-eq-height col-eq-height-4" style="padding: 20px">
+      <div id="offer-1" class="col-md-3 with-border">
+        <strong>Foo</strong> liczba sztuk <strong>1330</strong> w średniej wadze od 100 do 120.
+      </div>
+      <div class="column-margin"></div>
+      <div id="offer-2" class="col-md-3 with-border">
+        <strong>Bar</strong> liczba sztuk <strong>0</strong> w średniej wadze od 0 do 0.
+      </div>
+      <div class="column-margin"></div>
+      <div id="offer-3" class="col-md-3 with-border">
+        <strong>Baz</strong> liczba sztuk <strong>0</strong> w średniej wadze od 0 do 0.
+      </div>
+      <div class="column-margin"></div>
+      <div id="offer-4" class="col-md-3 with-border">
+        <strong>FooBar</strong> liczba sztuk <strong>0</strong> w średniej wadze od 0 do 0.
+      </div> 
     </div>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-        <div style="margin-bottom: 80px;">
+        <div class="btn-margin-bottom">
           <h4>Ceny poglegają negocjacji.</h4>
           <h5 id="price-info"></h5>
         </div>
@@ -160,9 +188,7 @@
 </section>
 
 <script id="offerTemplate" type="text/html">
-  <div id="offer-<%=escapeHtml(id)%>" class="col-md-3 with-border">
-    <strong><%=escapeHtml(namePl)%></strong> liczba sztuk <strong><%=escapeHtml(amount)%></strong> w średniej wadze od <%=escapeHtml(weightMin)%> do <%=escapeHtml(weightMax)%>.
-  </div>
+  <strong><%=escapeHtml(namePl)%></strong> liczba sztuk <strong><%=escapeHtml(amount)%></strong> w średniej wadze od <%=escapeHtml(weightMin)%> do <%=escapeHtml(weightMax)%>.
 </script>
 
 <section id="delivery" class="delivery-section">
@@ -254,7 +280,8 @@
 
         <p>
           <strong>Dział sprzedaży</strong><br/>
-          <a href="mailto:az@dfc.slask.pl" target="_blank">az@dfc.slask.pl</a>
+          <a href="mailto:az@dfc.slask.pl" target="_blank">az@dfc.slask.pl</a><br/>
+          <a href="mailto:ad@dfc.slask.pl" target="_blank">ad@dfc.slask.pl</a>
         </p>
 
         <p>

@@ -245,6 +245,13 @@ a.btn-green {
     vertical-align: top;
   }
 
+  .col-eq-height-2 [class*="col-"] {
+    float: none;
+    display: table-cell;
+    width: 50%;
+    vertical-align: top;
+  }
+
   .col-eq-height-4 [class*="col-"] {
     float: none;
     display: table-cell;
@@ -262,6 +269,14 @@ a.btn-green {
 
   .btn-margin-bottom {
     margin-bottom: 80px;
+  }
+
+  .sm-padding {
+    padding: 20px;
+  }
+
+  .sm-padding-top {
+    padding-top: 20px;
   }
 }
 
