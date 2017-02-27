@@ -88,7 +88,7 @@
         <h3 class="img-info">firma</h3>
       </div>
     </div>
-    <div class="col-eq-height row text-justify">
+    <div class="row col-eq-height text-justify">
       <div class="col-md-4 with-border">
         Danish Farming Consultants Sp&nbsp;z&nbsp;o.o. w&nbsp;Rzeczycach istnieje od 1 lipca 1995 roku i&nbsp;powstała na bazie części dawnego kombinatu PGR Gliwice. Jest to firma
         ze stuprocentowym duńskim kapitałem z&nbsp;nieruchomościami dzierżawionymi od Agencji Nieruchomości Rolnych.
@@ -159,20 +159,21 @@
         <img src="/img/sw.jpg" alt="średnia waga" class="img-responsive center-block"/>
       </div>
     </div>
-    <div class="row col-eq-height col-eq-height-4" style="padding: 20px">
-      <div id="offer-1" class="col-md-3 with-border"></div>
+    <div class="row col-eq-height col-eq-height-2" style="padding-bottom: 0">
+      <div id="offer-1" class="col-md-4 with-border"></div>
       <div class="column-margin"></div>
-      <div id="offer-2" class="col-md-3 with-border"></div>
+      <div id="offer-2" class="col-md-4 with-border"></div>
+    </div>
+    <div class="row col-eq-height col-eq-height-2" style="padding-top: 20px;">
+      <div id="offer-3" class="col-md-4 with-border"></div>
       <div class="column-margin"></div>
-      <div id="offer-3" class="col-md-3 with-border"></div>
-      <div class="column-margin"></div>
-      <div id="offer-4" class="col-md-3 with-border"></div> 
+      <div id="offer-4" class="col-md-4 with-border"></div>
     </div>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <div class="btn-margin-bottom">
-          <h4>Ceny poglegają negocjacji.</h4>
-          <h5 id="price-info"></h5>
+          <h3>Ceny poglegają negocjacji.</h4>
+          <h4 id="price-info"></h5>
         </div>
       </div>
     </div>
@@ -180,7 +181,7 @@
 </section>
 
 <script id="offerTemplate" type="text/html">
-  <strong><%=escapeHtml(namePl)%></strong> liczba sztuk <strong><%=escapeHtml(amount)%></strong> w średniej wadze od <%=escapeHtml(weightMin)%> do <%=escapeHtml(weightMax)%>.
+  <p class="lead"><strong><%=escapeHtml(namePl)%></strong> liczba sztuk <strong><%=escapeHtml(amount)%></strong> w średniej wadze od <%=escapeHtml(weightMin)%> do <%=escapeHtml(weightMax)%>.</p>
 </script>
 
 <section id="delivery" class="delivery-section">
