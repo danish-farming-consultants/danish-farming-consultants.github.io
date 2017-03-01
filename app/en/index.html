@@ -140,14 +140,21 @@
         <div id="offer-info" class="btn btn-green btn-label btn-xl btn-margin-top page-scroll wow pulse" data-wow-delay=".5s"></div>
       </div>
     </div>
-    <div class="row col-eq-height col-eq-height-4">
-      <div id="offers-placeholder"></div>
+    <div class="row col-eq-height col-eq-height-2" style="padding-bottom: 0">
+      <div id="offer-1" class="col-md-4 with-border"></div>
+      <div class="column-margin"></div>
+      <div id="offer-2" class="col-md-4 with-border"></div>
+    </div>
+    <div class="row col-eq-height col-eq-height-2" style="padding-top: 20px;">
+      <div id="offer-3" class="col-md-4 with-border"></div>
+      <div class="column-margin"></div>
+      <div id="offer-4" class="col-md-4 with-border"></div>
     </div>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-        <div style="margin-bottom: 80px;">
-          <h4>Prices are negotiable.</h4>
-          <h5 id="price-info"></h5>
+        <div class="btn-margin-bottom">
+          <h3>Prices are negotiable.</h4>
+          <p class="lead" id="price-info"></p>
         </div>
       </div>
     </div>
@@ -155,9 +162,7 @@
 </section>
 
 <script id="offerTemplate" type="text/html">
-  <div id="offer-<%=escapeHtml(id)%>" class="col-md-3 with-border">
-    <strong><%=escapeHtml(nameEn)%> <%=escapeHtml(amount)%></strong> at an average weight of <%=escapeHtml(weightMin)%> to <%=escapeHtml(weightMax)%>.
-  </div>
+  <p class="lead"><strong><%=escapeHtml(nameEn)%> <%=escapeHtml(amount)%></strong> at an average weight of <%=escapeHtml(weightMin)%> to <%=escapeHtml(weightMax)%>.</p>
 </script>
 
 <section id="delivery" class="delivery-section">
