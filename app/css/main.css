@@ -172,6 +172,14 @@ a.btn-green {
   text-shadow: 0 0 10px #000;
 }
 
+#gallery figcaption {
+    display: none;
+}
+
+.pb-5 {
+    padding-bottom: 50px;
+}
+
 @media (min-width: 767px) {
   .navbar {
     padding: 40px 0;

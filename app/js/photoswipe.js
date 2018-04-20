@@ -136,7 +136,6 @@ var initPhotoSwipeFromDOM = function (gallerySelector) {
 
     // define options (if needed)
     options = {
-      captionEl: false,
       fullscreenEl: false,
       shareEl: false,
       bgOpacity: 0.85,
