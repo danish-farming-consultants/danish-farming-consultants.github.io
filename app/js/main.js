@@ -121,3 +121,37 @@ $(function () {
     $('#price-info').text(price);
   });
 });
+
+$(function () {
+  var $pswpElement = $('.pswp')[0];
+  var $images = $('#gallery').find('img');
+
+  var items = $images.map(function () {
+    var size = $(this).data('size').split('x');
+    return {
+      src: this.src,
+      w: size[0],
+      h: size[1]
+    }
+  }).toArray();
+
+  $images.each(function (index) {
+    $(this).click(function () {
+      openPhotoSwipe(index);
+    });
+  });
+
+  function openPhotoSwipe(index) {
+    var options = {
+      index: index,
+      captionEl: false,
+      fullscreenEl: false,
+      shareEl: false,
+      bgOpacity: 0.85,
+      tapToToggleControls: false
+    };
+
+    var gallery = new PhotoSwipe($pswpElement, PhotoSwipeUI_Default, items, options);
+    gallery.init();
+  }
+});
