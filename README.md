@@ -9,13 +9,13 @@
 ## Building
 
 ```sh
-nvm use v9.1.0
+nvm use lts/carbon
 yarn
-gulp
+npm start
 ```
 
 ```sh
-nvm use v9.1.0
+nvm use lts/carbon
 yarn
-gulp build
+npm run build
 ```

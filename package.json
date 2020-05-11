@@ -14,6 +14,8 @@
     "run-sequence": "1.1.x"
   },
   "scripts": {
+    "start": "gulp",
+    "build": "gulp build",
     "postinstall": "bower install"
   }
 }
