@@ -20,6 +20,7 @@
   <link href="/lib/photoswipe/dist/photoswipe.css" rel="stylesheet">
   <link href="/lib/photoswipe/dist/default-skin/default-skin.css" rel="stylesheet">
   <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/form.css" rel="stylesheet">
 
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -246,7 +247,7 @@
         </div>
       </a>
     </div>
-    <div class="col-eq-height row text-middle">
+    <div class="col-eq-height col-eq-height-2 row text-middle">
       <div class="col-md-4 with-border">
         <p>
           <strong>Danish Farming Consultants Sp z o.o.</strong><br/>
@@ -294,38 +295,65 @@
           John Rasmussen
         </p>
       </div>
-      <div class="column-margin"></div>
-      <div class="col-md-4 with-border">
-        <p>
-          <strong>Administracja</strong><br/>
-          <a href="mailto:biuro@dfc.slask.pl">biuro@dfc.slask.pl</a><br/>
-        </p>
-
-        <p>
-          <strong>Dział sprzedaży</strong><br/>
-          <a href="mailto:ad@dfc.slask.pl">ad@dfc.slask.pl</a>
-        </p>
-
-        <p>
-          <strong>Księgowość</strong><br/>
-          <a href="mailto:ks@dfc.slask.pl">ks@dfc.slask.pl</a>
-        </p>
-
-        <p>
-          <strong>Kadry</strong><br/>
-          <a href="mailto:hr@dfc.slask.pl">hr@dfc.slask.pl</a>
-        </p>
-
-        <p>
-          <strong>Inspektor Ochrony Danych</strong><br/>
-          Marta Widuch-Wasiak<br/>
-          <a href="mailto:mww@dfc.slask.pl">mww@dfc.slask.pl</a>
-        </p>
-      </div>
     </div>
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
         <a href="https://goo.gl/maps/iZjT8" target="_blank" class="btn btn-green btn-xl btn-margin-bottom">zobacz dokładny dojazd</a>
+      </div>
+    </div>
+
+    <div style="padding-top: 0" class="row row-container single-row">
+      <div class="col-md-12 with-border text-justify">
+        <section class="l-form" id="form">
+          <div class="c-form">
+            <form class="c-form__form row" id="contact-form" novalidate>
+              <div class="c-form__header">
+                <h1 class="c-form__title">Napisz do nas</h1>
+                <h3 class="c-form__sub-title">Możesz też wysła wiadomoś na <a class="c-form__link js-clickable" id="form-email-link" href="mailto:biuro@dfc.slask.pl">biuro@dfc.slask.pl</a></h3>
+              </div>
+
+              <div class="c-form__group">
+                <label class="c-form__label" for="contact-form-name">Imię i nazwisko</label>
+                <input type="text" class="c-form__input js-validate js-focusable" id="contact-form-name" data-validation="name">
+                <div class="invalid-feedback" data-key="contact-form-name__invalid">
+                  Podaj prawidłowe imię i nazwisko (2-40 znaków)
+                </div>
+              </div>
+              <div class="c-form__group">
+                <label class="c-form__label" for="contact-form-email">Adres e-mail</label>
+                <input type="email" class="c-form__input js-validate js-focusable" id="contact-form-email" data-validation="email">
+                <div class="invalid-feedback">
+                  Podaj poprawny adres e-mail
+                </div>
+              </div>
+              <div class="c-form__group">
+                <label class="c-form__label" for="contact-form-message">Wiadomość</label>
+                <textarea class="c-form__textarea js-validate js-focusable" name="message" id="contact-form-message" data-validation="msg"></textarea>
+                <div class="invalid-feedback">
+                  Napisz wiadomoś (maksymalnie 10000 znakw)
+                </div>
+              </div>
+              <div class="c-form__group">
+                <label class="c-form__checkbox-label">Przeczytałem i rozumiem <a class="c-form__link js-clickable" id="form-privacy-link" href="/static/privacy-policy.pdf" target="_blank">Warunki Prywatności</a>.
+                  <span style="display: inline !important" class="invalid-feedback">*</span>
+                  <input type="checkbox" class="c-form__checkbox-input js-validate js-focusable" id="form-checkbox" name="checkbox" data-validation="checkbox">
+                  <span class="c-form__checkbox"></span>
+                  <span class="c-form__checkbox c-form__checkbox--invalid invalid-feedback"></span>
+                </label>
+              </div>
+
+              <div class="c-form__group">
+                <a class="c-form__btn btn btn-green btn-xl js-submitBtn js-sendMsg js-clickable" id="form-send-btn" role="button" style="margin-bottom: 45px">Wyślij wiadomość</a>
+              </div>
+              <div class="c-form__msg-info c-form__msg-info--success js-msgSent">
+                Wiadomość wysłana! Skontaktujemy się wkrótce!
+              </div>
+              <div class="c-form__msg-info c-form__msg-info--failure js-msgNotSent">
+                Przepraszamy, coś poszło nie tak. Spróbuj jeszcze raz.
+              </div>
+            </form>
+          </div>
+        </section>
       </div>
     </div>
   </div>
@@ -339,6 +367,17 @@
     </div>
   </div>
 </footer>
+
+<div class="c-cookie-info hide">
+  <div class="container-fluid">
+    <div class="row">
+      <p class="c-cookie-info__text l-col-clean col-lg-9 col-xl-10">Używamy ciasteczek i innych technologii aby zapewnić najlepsze działanie naszej strony. <a href="/static/cookie-policy.pdf" class="c-cookie-info__link js-clickable" id="alert-cookie-link" target="_blank">Dowiedz się więcej.</a></p>
+      <div class="c-cookie-info__btn l-col-clean col-lg-3 col-xl-2">
+        <a class="c-btn c-btn--sm l-btn js-hideCookieInfo js-clickable" id="alert-close-btn" role="button">Zamknij</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
   language = 'pl';
