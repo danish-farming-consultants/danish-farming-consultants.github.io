@@ -1,0 +1,481 @@
+$col-black: #000;
+$col-blue: rgb(15, 98, 195);
+$col-dark-blue: darken($col-blue, 10%);
+$col-light-blue: lighten($col-blue, 10%);
+$col-green: rgb(48, 185, 82);
+$col-dark-green: darken($col-green, 10%);
+$col-red: rgb(211, 35, 61);
+$col-dark-red: darken($col-red, 10%);
+$col-violet: rgb(116, 80, 196);
+$col-dark-violet: darken($col-violet, 10%);
+$col-bg: rgb(253, 252, 250);
+$col-dark-bg: rgb(239, 238, 236);
+$col-shadow: rgba(0, 0, 0, 0.08);
+$col-dark-gray: rgb(62, 63, 58);
+$col-gray: lighten($col-dark-gray, 10%);
+$col-light-gray: lighten($col-gray, 40%);
+$col-blue-faded: rgb(0, 102, 200);
+$col-violet-faded: rgb(119, 83, 198);
+$col-red-faded: rgb(195, 46, 87);
+$col-checkbox-hover: darken($col-dark-bg, 10%);
+$font-source-sans-pro: "Source Sans Pro", "Lucida Grande", "Verdana", sans-serif;
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+) !default;
+// scss-docs-end grid-breakpoints
+
+// Breakpoint viewport sizes and media queries.
+//
+// Breakpoints are defined as a map of (name: minimum width), order from small to large:
+//
+//    (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px)
+//
+// The map defined in the `$grid-breakpoints` global variable is used as the `$breakpoints` argument by default.
+
+// Name of the next breakpoint, or null for the last breakpoint.
+//
+//    >> breakpoint-next(sm)
+//    md
+//    >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    md
+//    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
+//    md
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+    $n: index($breakpoint-names, $name);
+    @if not $n {
+        @error "breakpoint `#{$name}` not found in `#{$breakpoints}`";
+    }
+    @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+// Minimum breakpoint width. Null for the smallest (first) breakpoint.
+//
+//    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    576px
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+    $min: map-get($breakpoints, $name);
+    @return if($min != 0, $min, null);
+}
+
+// Maximum breakpoint width. Null for the largest (last) breakpoint.
+// The maximum value is calculated as the minimum of the next one less 0.02px
+// to work around the limitations of `min-` and `max-` prefixes and viewports with fractional widths.
+// See https://www.w3.org/TR/mediaqueries-4/#mq-min-max
+// Uses 0.02px rather than 0.01px to work around a current rounding bug in Safari.
+// See https://bugs.webkit.org/show_bug.cgi?id=178261
+//
+//    >> breakpoint-max(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    767.98px
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+    $next: breakpoint-next($name, $breakpoints);
+    @return if($next, breakpoint-min($next, $breakpoints) - .02, null);
+}
+
+// Returns a blank string if smallest breakpoint, otherwise returns the name with a dash in front.
+// Useful for making responsive utilities.
+//
+//    >> breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    ""  (Returns a blank string)
+//    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    "-sm"
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+    @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+}
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($name, $breakpoints);
+    @if $min {
+        @media (min-width: $min) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+// Makes the @content apply to the given breakpoint and narrower.
+@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+    $max: breakpoint-max($name, $breakpoints);
+    @if $max {
+        @media (max-width: $max) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+// Media that spans multiple breakpoint widths.
+// Makes the @content apply between the min and max breakpoints
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($lower, $breakpoints);
+    $max: breakpoint-max($upper, $breakpoints);
+
+    @if $min != null and $max != null {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    } @else if $max == null {
+        @include media-breakpoint-up($lower, $breakpoints) {
+            @content;
+        }
+    } @else if $min == null {
+        @include media-breakpoint-down($upper, $breakpoints) {
+            @content;
+        }
+    }
+}
+
+// Media between the breakpoint's minimum and maximum widths.
+// No minimum for the smallest breakpoint, and no maximum for the largest one.
+// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
+@mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($name, $breakpoints);
+    $max: breakpoint-max($name, $breakpoints);
+
+    @if $min != null and $max != null {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    } @else if $max == null {
+        @include media-breakpoint-up($name, $breakpoints) {
+            @content;
+        }
+    } @else if $min == null {
+        @include media-breakpoint-down($name, $breakpoints) {
+            @content;
+        }
+    }
+}
+
+.l-form {
+    position: relative;
+    z-index: 1;
+    padding: 4rem;
+
+    @include media-breakpoint-down(md) {
+        padding: 3rem 1rem;
+    }
+
+    @include media-breakpoint-down(xs) {
+        padding: 3rem 0;
+    }
+}
+
+.c-form {
+    padding: 4rem 6rem;
+    background: $col-bg;
+    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.5);
+
+    &__form {
+        position: relative;
+    }
+
+    &__header {
+        width: 100%;
+        padding: 0;
+        padding-bottom: 2rem;
+        text-align: center;
+    }
+
+    &__title {
+        padding-bottom: 1rem;
+        font-size: 2.5rem;
+        color: $col-dark-gray;
+        letter-spacing: 0.02em;
+    }
+
+    &__sub-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: $col-gray;
+    }
+
+    &__link {
+        color: $col-light-blue;
+
+        &:hover {
+            color: $col-blue;
+        }
+    }
+
+    &__group {
+        width: 100%;
+        margin: 1rem 2rem;
+    }
+
+    &__label {
+        position: relative;
+        bottom: -2.5rem;
+        padding: 0 0.5rem;
+        font-size: 1.2rem;
+        color: $col-gray;
+        letter-spacing: 0.05em;
+        cursor: text;
+        transition: 0.3s ease;
+
+        &--raised {
+            bottom: 0;
+        }
+    }
+
+    &__input,
+    &__textarea {
+        width: 100%;
+        padding: 1rem 0.5rem;
+        margin-top: 0;
+        font-size: 1.2rem;
+        color: $col-dark-gray;
+        letter-spacing: 0.05em;
+        background: transparent;
+        border: 0;
+        border-bottom: solid 1px $col-light-gray;
+        border-radius: 0;
+        transition: 0.3s ease;
+
+        &:focus {
+            border-color: $col-dark-gray;
+            outline: none; /* stylelint-disable-line */
+        }
+    }
+
+    &__input {
+        margin-bottom: 0.25rem;
+    }
+
+    &__textarea {
+        height: 3.5rem;
+        resize: none; /* stylelint-disable-line */
+
+        &:focus,
+        &--filled {
+            height: 10rem;
+        }
+    }
+
+    &__btn {
+        margin: 2rem auto;
+    }
+
+    &__msg-info {
+        position: absolute;
+        bottom: -1rem;
+        left: 50%;
+        width: 100%;
+        font-size: 1.2rem;
+        text-align: center;
+        opacity: 0;
+        transform: translateX(-50%);
+
+        &--success {
+            color: $col-light-blue;
+        }
+
+        &--failure {
+            color: $col-dark-red;
+        }
+
+        &.show {
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out;
+        }
+    }
+
+    &__checkbox-label {
+        position: relative;
+        display: block;
+        padding: 1rem 0 1rem 2.5rem;
+        font-size: 1rem;
+        color: $col-gray;
+        cursor: pointer;
+    }
+
+    &__checkbox-input {
+        position: absolute;
+        width: 0;
+        height: 0;
+        cursor: pointer;
+        opacity: 0;
+
+        &:hover ~ .c-form__checkbox {
+            background: $col-checkbox-hover;
+        }
+
+        &:checked ~ .c-form__checkbox {
+            border-color: $col-light-blue;
+        }
+
+        &:checked ~ .c-form__checkbox::after {
+            opacity: 1;
+        }
+    }
+
+    &__checkbox {
+        position: absolute;
+        top: 1rem;
+        left: 0.5rem;
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+        background: $col-dark-bg;
+        border: 1px solid $col-gray;
+        border-radius: 4px;
+        transition: 0.3s ease;
+
+        &--invalid {
+            background: transparent;
+            border: 1px solid $col-red;
+
+            &::after {
+                display: none;
+            }
+        }
+
+        &::after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 11px;
+            content: "";
+            border: solid $col-light-blue;
+            border-width: 0 2px 2px 0;
+            opacity: 0;
+            transition: 0.3s ease;
+            transform: translate(-50%, -60%) rotate(45deg);
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        padding: 2rem;
+
+        &__title {
+            font-size: 2rem;
+        }
+
+        &__sub-title {
+            font-size: 1rem;
+        }
+
+        &__group {
+            margin: 0.5rem 1rem;
+        }
+
+        &__label {
+            bottom: -2.5rem;
+            font-size: 1rem;
+
+            &--raised {
+                bottom: 0;
+            }
+        }
+
+        &__input,
+        &__textarea {
+            font-size: 1rem;
+        }
+
+        &__textarea {
+            height: 51px;
+
+            &:focus,
+            &--filled {
+                height: 10rem;
+            }
+        }
+
+        &__msg-info {
+            bottom: 0;
+            font-size: 1rem;
+        }
+
+        &__checkbox-label {
+            font-size: 0.8rem;
+        }
+    }
+
+    @include media-breakpoint-down(xs) {
+        padding: 2rem 1rem;
+
+        &__header {
+            padding-bottom: 1rem;
+        }
+
+        &__title {
+            font-size: 1.5rem;
+        }
+
+        &__group {
+            margin: 0.5rem 0;
+        }
+
+        &__label {
+            bottom: -2rem;
+            padding: 0;
+            font-size: 1rem;
+
+            &--raised {
+                bottom: 0;
+            }
+        }
+
+        &__input,
+        &__textarea {
+            padding: 0.5rem 0;
+            font-size: 1rem;
+        }
+
+        &__textarea {
+            height: 35px;
+
+            &:focus,
+            &--filled {
+                height: 10rem;
+            }
+        }
+
+        &__btn {
+            margin-top: 1rem;
+        }
+
+        &__msg-info {
+            font-size: 0.8rem;
+        }
+
+        &__checkbox-label {
+            padding-left: 2rem;
+        }
+
+        &__checkbox {
+            left: 0;
+        }
+    }
+}
+
+.invalid-feedback {
+    font-size: 1rem;
+    color: $col-dark-red;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    &.show {
+        opacity: 1;
+    }
+
+    @include media-breakpoint-down(md) {
+        font-size: 0.8rem;
+    }
+}
+
+.js-invalid {
+    border-color: $col-dark-red !important;
+}

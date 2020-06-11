@@ -299,3 +299,48 @@ a.btn-green {
     padding-right: 200px;
   }
 }
+
+.c-cookie-info {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    padding: 1.5rem;
+    background: #efeeec;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+}
+.c-cookie-info__content {
+    text-align: center;
+}
+.c-cookie-info__text {
+    font-size: 1.2rem;
+    line-height: 150%;
+    color: #3e3f3a;
+    letter-spacing: 0.05em;
+}
+.c-cookie-info__btn {
+    display: inline-block;
+    text-align: right;
+}
+@media (max-width: 1199.98px) {
+    .c-cookie-info {
+        padding: 1rem;
+    }
+}
+@media (max-width: 991.98px) {
+    .c-cookie-info__text {
+        margin-bottom: 1.2rem;
+    }
+    .c-cookie-info__btn {
+        text-align: center;
+    }
+}
+@media (max-width: 767.98px) {
+    .c-cookie-info {
+        padding: 1rem 0;
+    }
+    .c-cookie-info__text {
+        font-size: 0.8rem;
+    }
+}

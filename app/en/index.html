@@ -20,6 +20,7 @@
   <link href="/lib/photoswipe/dist/photoswipe.css" rel="stylesheet">
   <link href="/lib/photoswipe/dist/default-skin/default-skin.css" rel="stylesheet">
   <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/form.css" rel="stylesheet">
 
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -222,7 +223,7 @@
         </div>
       </a>
     </div>
-    <div class="col-eq-height row text-middle">
+    <div class="col-eq-height col-eq-height-2 row text-middle">
       <div class="col-md-4 with-border">
         <p>
           <strong>Danish Farming Consultants Sp z o.o.</strong><br/>
@@ -239,7 +240,7 @@
         <p>
           <strong>NIP</strong> 631-10-21-786,<br/>
           <strong>VATUE</strong> PL6311021786,<br/>
-          <strong>REGON</strong> 272617540, <strong>KRS</strong> 000010844
+          <strong>REGON</strong> 272617540, <strong>KRS</strong> 0000108449
         </p>
 
         <p>
@@ -262,7 +263,7 @@
 
         <p>
           <strong>Manager of animal production</strong><br/>
-          Steen Low
+          Dawid Wyszyński and Piotr Wasiak
         </p>
 
         <p>
@@ -270,39 +271,66 @@
           John Rasmussen
         </p>
       </div>
-      <div class="column-margin"></div>
-      <div class="col-md-4 with-border">
-        <p>
-          <strong>Office</strong><br/>
-          <a href="mailto:biuro@dfc.slask.pl">biuro@dfc.slask.pl</a><br/>
-        </p>
-
-        <p>
-          <strong>Sales department</strong><br/>
-          <a href="mailto:ad@dfc.slask.pl">ad@dfc.slask.pl</a>
-        </p>
-
-        <p>
-          <strong>Accounting department</strong><br/>
-          <a href="mailto:ks@dfc.slask.pl">ks@dfc.slask.pl</a>
-        </p>
-
-        <p>
-          <strong>Human resources</strong><br/>
-          <a href="mailto:hr@dfc.slask.pl">hr@dfc.slask.pl</a>
-        </p>
-
-        <p>
-          <strong>Data Protection Officer</strong><br/>
-          Marta Widuch-Wasiak<br/>
-          <a href="mailto:mww@dfc.slask.pl">mww@dfc.slask.pl</a>
-        </p>
-      </div>
     </div>
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
         <a href="https://goo.gl/maps/iZjT8" target="_blank" class="btn btn-green btn-xl btn-margin-bottom">get directions</a>
       </div>
+    </div>
+  </div>
+
+  <div style="padding-top: 0" class="row row-container single-row">
+    <div class="col-md-12 with-border text-justify">
+      <section class="l-form" id="form">
+        <div class="c-form">
+          <form class="c-form__form row" id="contact-form" novalidate>
+            <div class="c-form__header">
+              <h1 class="c-form__title">Contact us</h1>
+              <h3 class="c-form__sub-title">Send us a message at <a class="c-form__link js-clickable" id="form-email-link" href="mailto:biuro@dfc.slask.pl">biuro@dfc.slask.pl</a></h3>
+            </div>
+
+            <div class="c-form__group">
+              <label class="c-form__label" for="contact-form-name">Your name</label>
+              <input type="text" class="c-form__input js-validate js-focusable" id="contact-form-name" data-validation="name">
+              <div class="invalid-feedback" data-key="contact-form-name__invalid">
+                Insert a valid name (2-40 characters)
+              </div>
+            </div>
+            <div class="c-form__group">
+              <label class="c-form__label" for="contact-form-email">Your e-mail address</label>
+              <input type="email" class="c-form__input js-validate js-focusable" id="contact-form-email" data-validation="email">
+              <div class="invalid-feedback">
+                Insert a valid e-mail address
+              </div>
+            </div>
+            <div class="c-form__group">
+              <label class="c-form__label" for="contact-form-message">Your message</label>
+              <textarea class="c-form__textarea js-validate js-focusable" name="message" id="contact-form-message" data-validation="msg"></textarea>
+              <div class="invalid-feedback">
+                Insert your message here (max 10000 characters)
+              </div>
+            </div>
+            <div class="c-form__group">
+              <label class="c-form__checkbox-label">I have read and agreed to <a class="c-form__link js-clickable" id="form-privacy-link" href="/static/privacy-policy.pdf" target="_blank">Privacy Policy</a>.
+                <span style="display: inline !important" class="invalid-feedback">*</span>
+                <input type="checkbox" class="c-form__checkbox-input js-validate js-focusable" id="form-checkbox" name="checkbox" data-validation="checkbox">
+                <span class="c-form__checkbox"></span>
+                <span class="c-form__checkbox c-form__checkbox--invalid invalid-feedback"></span>
+              </label>
+            </div>
+
+            <div class="c-form__group">
+              <a class="c-form__btn btn btn-green btn-xl js-submitBtn js-sendMsg js-clickable" id="form-send-btn" role="button" style="margin-bottom: 45px">Wyślij wiadomość</a>
+            </div>
+            <div class="c-form__msg-info c-form__msg-info--success js-msgSent">
+              Message sent, thank you! We'll contact you within 48 hours.
+            </div>
+            <div class="c-form__msg-info c-form__msg-info--failure js-msgNotSent">
+              Sorry, something went wrong. Please try again.
+            </div>
+          </form>
+        </div>
+      </section>
     </div>
   </div>
 </section>
@@ -362,6 +390,17 @@
 
       <div class="pswp__caption">
         <div class="pswp__caption__center"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="c-cookie-info hide">
+  <div class="container-fluid">
+    <div class="row">
+      <p class="c-cookie-info__text l-col-clean col-lg-9 col-xl-10">We use cookies and local storage to ensure you get the best experience on our website. See our <a href="/static/cookie-policy.pdf" class="c-cookie-info__link js-clickable" id="alert-cookie-link" target="_blank">Cookie and Local Storage Policy</a> for more information</p>
+      <div class="c-cookie-info__btn l-col-clean col-lg-3 col-xl-2">
+        <a class="c-btn c-btn--sm l-btn js-hideCookieInfo js-clickable" id="alert-close-btn" role="button">Close</a>
       </div>
     </div>
   </div>
