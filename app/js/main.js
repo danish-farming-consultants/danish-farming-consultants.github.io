@@ -299,7 +299,8 @@ function sendMessage() {
 }
 
 function hideCookieInfoOnClick() {
-  var cookieCodeloopAccepted = localStorage.getItem('cookieDfcAccepted');
+  //var cookieCodeloopAccepted = localStorage.getItem('cookieDfcAccepted');
+  var cookieCodeloopAccepted = 'true';
   if (cookieCodeloopAccepted !== 'true') {
     $('.c-cookie-info').removeClass('hide');
     $('.js-hideCookieInfo').click(function () {
