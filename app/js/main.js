@@ -285,7 +285,7 @@ function sendMessage() {
 
         $.ajax({
           type: 'POST',
-          url: 'http://dfc.slask.pl/api/mail.php',
+          url: 'https://dfc.slask.pl/api/mail.php',
           data: JSON.stringify(jsonObject)
         }).done(function () {
           showMsgSentInfo(form);
