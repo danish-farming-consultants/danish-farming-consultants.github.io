@@ -4,10 +4,10 @@
   "private": true,
   "repository": "danish-farming-consultants/danish-farming-consultants.github.io",
   "devDependencies": {
-    "bower": "1.5.x",
+    "bower": "1.8.x",
     "del": "2.0.x",
-    "gulp": "3.9.x",
-    "gulp-babel": "5.2.x",
+    "gulp": "4.0.x",
+    "gulp-babel": "8.0.x",
     "gulp-connect": "2.2.x",
     "gulp-sourcemaps": "1.6.x",
     "proxy-middleware": "0.14.x",
